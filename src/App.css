@@ -1,38 +1,216 @@
-.App {
-  text-align: center;
-}
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  font-family: "Roboto", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-top: 35vh;
 }
 
-.App-link {
-  color: #61dafb;
+.title {
+  margin: 1vh;
+  font-size: 4vh;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.userNameForm {
+  display: flex;
+  align-self: center;
+  margin-bottom: 20px;
+}
+
+.userNameForm button {
+  border-style: none;
+  background-color: white;
+  border-bottom: gray solid 1px;
+}
+
+.userNameInput {
+  border-style: none;
+  height: 30px;
+  width: 250px;
+  border-bottom: gray solid 1px;
+  text-align: center;
+}
+.userNameInput:focus {
+  outline: none;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: 1px solid gray;
+  border-radius: 10px;
+  transition: flex 5s;
+  margin-bottom: 10px;
+  transition: height 3s, width 5s;
+  align-self: center;
+  animation: fade-in 2s;
+}
+
+.imageTextHolder {
+  display: flex;
+  justify-content: flex-start;
+  padding: 5px;
+  align-items: center;
+}
+
+.imageTextHolder img {
+  border-radius: 50px;
+  margin-right: 10px;
+}
+
+.imageTextHolder p {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 2.5vh;
+}
+
+.contentContainer {
+  height: inherit;
+  width: inherit;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  animation: fade-in 2s;
+}
+
+.Card {
+  display: flex;
+  /* flex: 0.5; */
+  margin: 5px;
+  /* height: calc(100% - 11vh); */
+  border: 1px solid gold;
+  border-radius: 10px;
+}
+.active {
+  flex: 5;
+  flex-direction: column;
+}
+.inactive {
+  flex: 0.5;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    opacity: 1;
   }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (min-width: 0px) {
+  .panel,
+  .imageTextHolder {
+    width: 93vw;
+    height: 11vh;
+  }
+
+  .expanded {
+    width: 97vw;
+    height: 97vh;
+    transition: height 3s, width 3s;
+  }
+  .imageTextHolder img {
+    height: 9vh;
+  }
+}
+
+@media (min-width: 480px) {
+  .panel,
+  .imageTextHolder {
+    width: 90vw;
+    height: 9vh;
+  }
+
+  .expanded {
+    width: 93vw;
+    height: 93vh;
+    transition: height 3s, width 3s;
+  }
+  .imageTextHolder img {
+    height: 7vh;
+  }
+}
+
+@media (min-width: 1024px) {
+  .panel,
+  .imageTextHolder {
+    width: 75vw;
+    height: 9vh;
+  }
+
+  .expanded {
+    width: 90vw;
+    height: 90vh;
+    transition: height 3s, width 3s;
+  }
+}
+
+@media (min-width: 1280px) {
+  .panel,
+  .imageTextHolder {
+    width: 50vw;
+    height: 9vh;
+  }
+
+  .expanded {
+    width: 70vw;
+    height: 85vh;
+    transition: height 3s, width 3s;
+  }
+}
+
+@media (min-width: 1920px) {
+  .panel,
+  .imageTextHolder {
+    width: 40vw;
+    height: 9vh;
+  }
+
+  .expanded {
+    width: 50vw;
+    height: 80vh;
+    transition: height 3s, width 3s;
+  }
+}
+
+.collapsed {
+  opacity: 0;
+  transition: opacity 1.5s;
+}
+
+.trulyCollapse,
+.trulyCollapse img,
+.trulyCollapse p {
+  margin: 0;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  transition: height 2s, width 1s, opacity 2s, margin 2s;
 }
