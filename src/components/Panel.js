@@ -2,49 +2,27 @@ import { useState } from "react";
 import PanelContent from "./PanelContent";
 
 const Panel = (props) => {
-  const [style, setStyle] = useState("");
-  const [expanded, toggleExpanded] = useState(false);
-
-  const divClickHandler = (e) => {
-    if (props.type === "profile") {
-      props.targetHandler(e.target.childNodes[1].outerText);
-      expandHandler();
-    } else {
-    }
-  };
+  const [style, setStyle] = useState("collapsed");
 
   const imgClickHandler = (e) => {
-    if (props.type === "profile") {
-      e.stopPropagation();
-      setStyle("trulyCollapse");
-      setTimeout(() => {
-        props.deleteHandler(e.target.nextSibling.outerText);
-      }, 1500);
-    } else {
-    }
+    e.stopPropagation();
+    setStyle("trulyCollapse");
+    setTimeout(() => {
+      props.deleteHandler(e.target.nextSibling.innerText);
+    }, 1500);
   };
-
-  // When clicked, shows the current state of the div element
-  const expandHandler = () => {
-    props.styleReceiver(style);
-    if (expanded) {
-      setStyle("");
-      toggleExpanded(false);
-    } else {
-      setStyle("expanded");
-      toggleExpanded(true);
-    }
-  };
-
-  //   const deleteHandler = (e) => {};
 
   return (
-    <div className={`panel ${style}`} onClick={divClickHandler}>
+    <div
+      className={`panel ${style}`}
+      onClick={() => setStyle(style === "expanded" ? "collapsed" : "expanded")}
+    >
       <div className="imageTextHolder">
         <img src={props.imageURL} alt="profile" onClick={imgClickHandler} />
-        <p className="userName">{props.userName}</p>
+        <h2 className="userName">{props.userName}</h2>
       </div>
-      {props.displayContent && <PanelContent isContentExpanded={expanded} />}
+
+      <PanelContent profiles={props.profiles} />
     </div>
   );
 };

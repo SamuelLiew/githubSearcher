@@ -1,5 +1,5 @@
-import ProfilePanel from "./ProfilePanel";
-const ProfilesList = (props) => {
+import Panel from "./Panel";
+const List = (props) => {
   const deleteHandler = (elementName) => {
     props.deleteHandler(elementName);
   };
@@ -9,7 +9,7 @@ const ProfilesList = (props) => {
   return (
     <>
       {props.profiles.map((profile) => (
-        <ProfilePanel
+        <Panel
           key={profile["id"]}
           imageURL={profile["avatar_url"]}
           userName={profile["login"]}
@@ -22,4 +22,4 @@ const ProfilesList = (props) => {
   );
 };
 
-export default ProfilesList;
+export default List;

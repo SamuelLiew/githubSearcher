@@ -1,12 +1,17 @@
 import Card from "./Card";
 
-const Followings = () => {
+const Followings = (props) => {
+  const activeOrInactive =
+    props.activeCard === "followings" ? "active" : "inactive";
   return (
     <Card
-      status="inactive"
+      status={activeOrInactive}
+      onClick={props.onClick}
       child={
         <>
-          <div>Followings</div>
+          <div className="contentHeader">
+            <h3>Followings</h3>
+          </div>
         </>
       }
     />

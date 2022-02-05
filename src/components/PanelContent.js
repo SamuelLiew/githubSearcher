@@ -1,22 +1,36 @@
+import { useState } from "react";
 import Followers from "./Followers";
 import Followings from "./Followings";
 import Information from "./Information";
 import Repositories from "./Repositories";
 import Stars from "./Stars";
 
-const clickHandler = (e) => {
-  e.stopPropagation();
-};
-
 const PanelContent = (props) => {
-  const style = props.isContentExpanded === true ? "" : "collapsed";
+  const [whoIsActive, setWhoIsActive] = useState("information");
+  const clickHandler = (e) => {
+    e.stopPropagation();
+  };
+
   return (
-    <div className={`contentContainer ${style}`} onClick={clickHandler}>
-      <Information />
-      <Followers />
-      <Followings />
-      <Repositories />
-      <Stars />
+    <div className="contentContainer" onClick={clickHandler}>
+      <Information
+        profiles={props.profiles}
+        onClick={() => setWhoIsActive("information")}
+        activeCard={whoIsActive}
+      />
+      <Followers
+        onClick={() => setWhoIsActive("followers")}
+        activeCard={whoIsActive}
+      />
+      <Followings
+        onClick={() => setWhoIsActive("followings")}
+        activeCard={whoIsActive}
+      />
+      <Repositories
+        onClick={() => setWhoIsActive("repositories")}
+        activeCard={whoIsActive}
+      />
+      <Stars onClick={() => setWhoIsActive("stars")} activeCard={whoIsActive} />
     </div>
   );
 };

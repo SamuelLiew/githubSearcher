@@ -1,13 +1,17 @@
 import Card from "./Card";
 
-const Stars = () => {
+const Stars = (props) => {
+  const activeOrInactive = props.activeCard === "stars" ? "active" : "inactive";
   return (
     <Card
-      status="inactive"
+      status={activeOrInactive}
+      onClick={props.onClick}
       child={
-        <div>
-          <div>Stars</div>
-        </div>
+        <>
+          <div className="contentHeader">
+            <h3>Stars</h3>
+          </div>
+        </>
       }
     />
   );
