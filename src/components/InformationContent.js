@@ -22,7 +22,6 @@ const InformationContent = (props) => {
             key={getKey()}
             child={<>{title}</>}
             onClick={miniCardHandler}
-            onTouchStart={miniCardHandler}
             status="miniCard"
           />
         );

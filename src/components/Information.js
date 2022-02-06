@@ -52,6 +52,7 @@ const Information = (props) => {
           ? e.target.parentNode.parentNode.parentNode.parentNode.previousSibling
               .innerText
           : e.target.parentNode.parentNode.parentNode.previousSibling.innerText;
+      console.log(name);
       const profileObject = props.profiles.filter(
         (profile) => profile["login"] === name
       )[0];
@@ -87,6 +88,8 @@ const Information = (props) => {
   };
 
   const miniCardHandler = (title, name) => {
+    console.log(name);
+
     if (handler.getAPICounterPart(title) !== undefined) {
       const profileObject = props.profiles.filter(
         (profile) => profile["login"] === name
@@ -132,11 +135,7 @@ const Information = (props) => {
       child={
         <>
           <div className="contentHeader">
-            <button
-              onClick={arrowHandler}
-              onTouchStart={arrowHandler}
-              className="button"
-            >
+            <button onClick={arrowHandler} className="button">
               {arrowDirection === "up" ? (
                 <ion-icon name="arrow-up-outline"></ion-icon>
               ) : (
@@ -144,12 +143,8 @@ const Information = (props) => {
               )}
             </button>
             <h3>Information</h3>
-            <button
-              onClick={eyeHandler}
-              onTouchStart={eyeHandler}
-              className="button"
-            >
-              {closedEye === true ? (
+            <button onClick={eyeHandler} className="button">
+              {closedEye ? (
                 <ion-icon name="eye-off-outline"></ion-icon>
               ) : (
                 <ion-icon name="eye-outline"></ion-icon>
