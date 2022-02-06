@@ -3,7 +3,10 @@
 * {
   box-sizing: border-box;
 }
-
+button,
+div {
+  cursor: pointer;
+}
 body {
   font-family: "Roboto", sans-serif;
   display: flex;
