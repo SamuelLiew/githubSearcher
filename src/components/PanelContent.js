@@ -15,6 +15,8 @@ const PanelContent = (props) => {
     <div className="contentContainer" onClick={clickHandler}>
       <Information
         profiles={props.profiles}
+        setArrowDirection={(direction) => props.setArrowDirection(direction)}
+        arrowDirection={props.arrowDirection}
         onClick={() => setWhoIsActive("information")}
         activeCard={whoIsActive}
       />

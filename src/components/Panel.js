@@ -7,9 +7,8 @@ const Panel = (props) => {
   const imgClickHandler = (e) => {
     e.stopPropagation();
     setStyle("trulyCollapse");
-    setTimeout(() => {
-      props.deleteHandler(e.target.nextSibling.innerText);
-    }, 1500);
+    const data = e.target.nextSibling.innerText;
+    setTimeout(() => props.deleteHandler(data), 1500);
   };
 
   return (
@@ -22,7 +21,11 @@ const Panel = (props) => {
         <h2 className="userName">{props.userName}</h2>
       </div>
 
-      <PanelContent profiles={props.profiles} />
+      <PanelContent
+        profiles={props.profiles}
+        arrowDirection={props.arrowDirection}
+        setArrowDirection={(direction) => props.setArrowDirection(direction)}
+      />
     </div>
   );
 };

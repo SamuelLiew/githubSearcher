@@ -22,7 +22,6 @@ const Information = (props) => {
     ...fourthTitles,
   ];
   const [closedEye, setClosedEye] = useState(true);
-  const [arrowDirection, setArrowDirection] = useState("up");
   const [titleArrays, setTitleArrays] = useState([
     firstTitles,
     secondTitles,
@@ -47,12 +46,13 @@ const Information = (props) => {
 
   const eyeHandler = (e) => {
     if (closedEye) {
-      const name =
+      const name = (
         e.target.childElementCount === 0
           ? e.target.parentNode.parentNode.parentNode.parentNode.previousSibling
               .innerText
-          : e.target.parentNode.parentNode.parentNode.previousSibling.innerText;
-      console.log(name);
+          : e.target.parentNode.parentNode.parentNode.previousSibling.innerText
+      ).trim();
+
       const profileObject = props.profiles.filter(
         (profile) => profile["login"] === name
       )[0];
@@ -84,12 +84,10 @@ const Information = (props) => {
   };
 
   const arrowHandler = () => {
-    setArrowDirection(arrowDirection === "up" ? "left" : "up");
+    props.setArrowDirection(props.arrowDirection === "up" ? "left" : "up");
   };
 
   const miniCardHandler = (title, name) => {
-    console.log(name);
-
     if (handler.getAPICounterPart(title) !== undefined) {
       const profileObject = props.profiles.filter(
         (profile) => profile["login"] === name
@@ -103,29 +101,11 @@ const Information = (props) => {
         fourthTitles,
       ];
       let chosenTitles = originalTitleArrays[titleSection - 1];
-      console.log(chosenTitles);
       chosenTitles[chosenTitles.indexOf(title)] =
         profileObject === null || profileObject === "" ? "N/A" : profileObject;
       setTitleArrays([firstTitles, secondTitles, thirdTitles, fourthTitles]);
-      console.log(titleArrays);
     }
   };
-
-  // Failed To Implement Horizontal Scrolling... Ask the user to press shift while scrolling or
-  // click on the mouse wheel.
-  // const wheelHandler = (e) => {
-  //   // console.log(e);
-  //   e.preventDefault();
-  //   if (arrowDirection === "left") {
-  //     const container = document.querySelector(".left");
-  //     const containerScrollPosition = container.scrollLeft;
-  //     const miniCardScroll = document.querySelector(".miniCard");
-  //     console.log(miniCardScroll);
-  //     miniCardScroll.scrollTo({
-  //       left: miniCardScroll.scrollLeft + e.deltaY,
-  //     });
-  //   }
-  // };
 
   return (
     <Card
@@ -136,7 +116,7 @@ const Information = (props) => {
         <>
           <div className="contentHeader">
             <button onClick={arrowHandler} className="button">
-              {arrowDirection === "up" ? (
+              {props.arrowDirection === "up" ? (
                 <ion-icon name="arrow-up-outline"></ion-icon>
               ) : (
                 <ion-icon name="arrow-back-outline"></ion-icon>
@@ -152,7 +132,7 @@ const Information = (props) => {
             </button>
           </div>
           <div className={`informationContent ${styleFunction()}`}>
-            <div className={`slider ${arrowDirection}`}>
+            <div className={`slider ${props.arrowDirection}`}>
               {titleArrays.map((titles) => {
                 return (
                   <InformationContent

@@ -9,9 +9,8 @@ const InformationContent = (props) => {
   };
   const miniCardHandler = (e) => {
     props.miniCardHandler(
-      e.target.innerText,
-      e.target.parentNode.parentNode.parentNode.parentNode.parentNode
-        .previousSibling.innerText
+      e.target.innerText.trim(),
+      e.target.parentNode.parentNode.parentNode.parentNode.parentNode.previousSibling.innerText.trim()
     );
   };
   return (

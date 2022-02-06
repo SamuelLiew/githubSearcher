@@ -24,25 +24,30 @@ body {
 
 .title {
   margin: 1vh;
-  font-size: 4vh;
+  font-size: 5vh;
 }
 
 .userNameForm {
   display: flex;
   align-self: center;
-  margin-bottom: 20px;
+  margin-bottom: 2vh;
 }
 
 .userNameForm button {
+  margin: 0;
+  font-size: 2vh;
+  padding: none;
   border-style: none;
   background-color: #fff;
   border-bottom: gray solid 1px;
 }
 
 .userNameInput {
+  border-radius: 0;
   border-style: none;
-  height: 30px;
-  width: 250px;
+  height: 4vh;
+  width: 70vw;
+  font-size: 2vh;
   border-bottom: gray solid 1px;
   text-align: center;
 }
@@ -99,7 +104,6 @@ body {
   justify-content: flex-start;
   align-items: center;
   overflow: hidden;
-  cursor: pointer;
 }
 
 .contentHeader {
@@ -119,7 +123,6 @@ body {
   width: 12%;
   border-style: none;
   background-color: white;
-  cursor: pointer;
 
   /* height: 80%; */
 }
@@ -180,6 +183,8 @@ body {
 .slide {
   /* margin-top: 10%; */
   /* margin-bottom: 20%; */
+  scroll-snap-stop: always;
+  overflow: visible;
   scroll-snap-align: start;
   width: 100%;
   flex-shrink: 0;

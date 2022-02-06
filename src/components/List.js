@@ -1,5 +1,8 @@
+import { useState } from "react";
 import Panel from "./Panel";
 const List = (props) => {
+  const [arrowDirection, setArrowDirection] = useState("left");
+
   const deleteHandler = (elementName) => {
     props.deleteHandler(elementName);
   };
@@ -14,6 +17,8 @@ const List = (props) => {
           imageURL={profile["avatar_url"]}
           userName={profile["login"]}
           profiles={props.profiles}
+          arrowDirection={arrowDirection}
+          setArrowDirection={(direction) => setArrowDirection(direction)}
           updateProfile={updateProfile}
           deleteHandler={deleteHandler}
         />

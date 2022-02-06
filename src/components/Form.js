@@ -22,7 +22,7 @@ const Form = (props) => {
         props.onSubmit(resp["data"]);
       }
     } catch (err) {
-      console.log("Name Doesn't Exist");
+      alert("Name Doesn't Exist");
     }
 
     setUserName("");
