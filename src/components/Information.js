@@ -128,10 +128,15 @@ const Information = (props) => {
     <Card
       status={activeOrInactive}
       onClick={clickHandler}
+      onTouchStart={clickHandler}
       child={
         <>
           <div className="contentHeader">
-            <button onClick={arrowHandler} className="button">
+            <button
+              onClick={arrowHandler}
+              onTouchStart={arrowHandler}
+              className="button"
+            >
               {arrowDirection === "up" ? (
                 <ion-icon name="arrow-up-outline"></ion-icon>
               ) : (
@@ -139,7 +144,11 @@ const Information = (props) => {
               )}
             </button>
             <h3>Information</h3>
-            <button onClick={eyeHandler} className="button">
+            <button
+              onClick={eyeHandler}
+              onTouchStart={eyeHandler}
+              className="button"
+            >
               {closedEye === true ? (
                 <ion-icon name="eye-off-outline"></ion-icon>
               ) : (
