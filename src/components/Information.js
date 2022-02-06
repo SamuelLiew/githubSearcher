@@ -93,25 +93,32 @@ const Information = (props) => {
       )[0][handler.getAPICounterPart(title)];
 
       const titleSection = titleNumberPair[title];
-      let chosenTitles;
-      switch (titleSection) {
-        case 1:
-          chosenTitles = firstTitles;
-          break;
-        case 2:
-          chosenTitles = secondTitles;
+      const originalTitleArrays = [
+        firstTitles,
+        secondTitles,
+        thirdTitles,
+        fourthTitles,
+      ];
+      let chosenTitles = originalTitleArrays[titleSection - 1];
+      // switch (titleSection) {
+      //   case 1:
+      //     chosenTitles = firstTitles;
+      //     break;
+      //   case 2:
+      //     chosenTitles = secondTitles;
 
-          break;
-        case 3:
-          chosenTitles = thirdTitles;
-          break;
-        case 4:
-          chosenTitles = fourthTitles;
+      //     break;
+      //   case 3:
+      //     chosenTitles = thirdTitles;
+      //     break;
+      //   case 4:
+      //     chosenTitles = fourthTitles;
 
-          break;
-        default:
-          break;
-      }
+      //     break;
+      //   default:
+      //     break;
+      // }
+      console.log(chosenTitles);
       chosenTitles[chosenTitles.indexOf(title)] =
         profileObject === null || profileObject === "" ? "N/A" : profileObject;
       setTitleArrays([firstTitles, secondTitles, thirdTitles, fourthTitles]);
