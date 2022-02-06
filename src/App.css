@@ -103,12 +103,22 @@ body {
 .contentHeader {
   width: 100%;
   height: auto;
+  justify-content: space-evenly;
+  display: flex;
+  align-items: center;
 }
 
 .contentHeader h3 {
   opacity: 0;
   transition: opacity 4s;
   height: 100%;
+}
+.buttonComplement,
+.button {
+  width: 12%;
+  border-style: none;
+  background-color: white;
+  /* height: 80%; */
 }
 
 .informationContent {
@@ -143,18 +153,21 @@ body {
   transition: transform 1s;
   /* border-color: purple; */
   border: 1px purple solid;
+  margin: 0px, auto;
 }
 
 .slider {
   height: 100%;
   width: 70%;
   display: flex;
-  flex-direction: column;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: none;
   scrollbar-width: none;
   scroll-snap-type: x mandatory;
+  border: solid gray;
+  border-radius: 10px;
+  border-width: 0px 1px;
 }
 
 .slider::-webkit-scrollbar {
@@ -163,7 +176,7 @@ body {
 
 .slide {
   /* margin-top: 10%; */
-  margin-bottom: 20%;
+  /* margin-bottom: 20%; */
   scroll-snap-align: start;
   width: 100%;
   flex-shrink: 0;
@@ -221,6 +234,11 @@ body {
     margin: 0.5vh;
     font-size: 3vh;
   }
+
+  .buttonComplement,
+  .button {
+    width: 12%;
+  }
 }
 
 @media (min-width: 480px) {
@@ -242,6 +260,10 @@ body {
   .contentContainer {
     height: calc(93vh - 9vh);
   }
+  .buttonComplement,
+  .button {
+    width: 10%;
+  }
 }
 
 @media (min-width: 700px) {
@@ -259,6 +281,10 @@ body {
   .contentContainer {
     height: calc(91vh - 9vh);
   }
+  .buttonComplement,
+  .button {
+    width: 6%;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -275,6 +301,13 @@ body {
 
   .contentContainer {
     height: calc(90vh - 9vh);
+  }
+  .contentHeader {
+    justify-content: center;
+  }
+  .buttonComplement,
+  .button {
+    width: 4%;
   }
 }
 
@@ -312,6 +345,10 @@ body {
   }
 }
 
+ion-icon {
+  font-size: 2.5vh;
+}
+
 .expanded .contentContainer {
   display: flex;
   position: relative;
@@ -333,7 +370,14 @@ body {
 .expanded .contentContainer,
 .visible {
   opacity: 1;
-  transition: opacity 1s;
+  transition: opacity 2s;
+}
+
+.up {
+  flex-direction: column;
+}
+.left {
+  flex-direction: row;
 }
 
 .trulyCollapse,

@@ -9,27 +9,32 @@ const Information = (props) => {
     key = key + 1;
     return key;
   };
+
   const handler = new APIHandler();
   const firstTitles = ["Bio", "Blog", "Company", "Created"];
-  const secondTitles = ["Email", "Followers", "Gists", "Github"];
-  const thirdTitles = ["Twitter", "Type", "Updated"];
+  const secondTitles = ["Email", "Followers", "Following", "Gists"];
+  const thirdTitles = ["Github", "Name", "Twitter", "Type"];
+  const fourthTitles = ["Updated"];
+  const everyTitle = [
+    ...firstTitles,
+    ...secondTitles,
+    ...thirdTitles,
+    ...fourthTitles,
+  ];
   const [closedEye, setClosedEye] = useState(true);
+  const [arrowDirection, setArrowDirection] = useState("up");
   const [titleArrays, setTitleArrays] = useState([
     firstTitles,
     secondTitles,
     thirdTitles,
+    fourthTitles,
   ]);
 
   const titleNumberPair = {};
-  firstTitles.forEach((title) => {
-    titleNumberPair[title] = 1;
-  });
-  secondTitles.forEach((title) => {
-    titleNumberPair[title] = 2;
-  });
-  thirdTitles.forEach((title) => {
-    titleNumberPair[title] = 3;
-  });
+
+  for (let i = 0; i < everyTitle.length; i++) {
+    titleNumberPair[everyTitle[i]] = Math.ceil((i + 1) / 4);
+  }
   const activeOrInactive =
     props.activeCard === "information" ? "active" : "inactive";
   const clickHandler = () => {
@@ -41,41 +46,44 @@ const Information = (props) => {
   };
 
   const eyeHandler = (e) => {
-    if (!closedEye) {
+    if (closedEye) {
       const name =
-        e.target.parentNode.parentNode.parentNode.parentNode.previousSibling
-          .innerText;
+        e.target.childElementCount === 0
+          ? e.target.parentNode.parentNode.parentNode.parentNode.previousSibling
+              .innerText
+          : e.target.parentNode.parentNode.parentNode.previousSibling.innerText;
       const profileObject = props.profiles.filter(
         (profile) => profile["login"] === name
       )[0];
+      const newTitleArray = [];
+      let counter = 0;
+      titleArrays.forEach((titles) => {
+        newTitleArray.push(
+          titles.map((title) => {
+            let fixedTitle = title;
+            if (handler.getAPICounterPart(title) === undefined) {
+              fixedTitle = everyTitle[counter];
+            }
+            counter = counter + 1;
 
-      const newFirstTitles = firstTitles.map((title) =>
-        profileObject[handler.getAPICounterPart(title)] === null ||
-        profileObject[handler.getAPICounterPart(title)] === ""
-          ? "N/A"
-          : profileObject[handler.getAPICounterPart(title)]
-      );
-      const newSecondTitles = secondTitles.map((title) =>
-        profileObject[handler.getAPICounterPart(title)] === null ||
-        profileObject[handler.getAPICounterPart(title)] === ""
-          ? "N/A"
-          : profileObject[handler.getAPICounterPart(title)]
-      );
-      const newThirdTitles = thirdTitles.map((title) =>
-        profileObject[handler.getAPICounterPart(title)] === null ||
-        profileObject[handler.getAPICounterPart(title)] === ""
-          ? "N/A"
-          : profileObject[handler.getAPICounterPart(title)]
-      );
-      setTitleArrays([newFirstTitles, newSecondTitles, newThirdTitles]);
+            return profileObject[handler.getAPICounterPart(fixedTitle)] ===
+              null ||
+              profileObject[handler.getAPICounterPart(fixedTitle)] === ""
+              ? "N/A"
+              : profileObject[handler.getAPICounterPart(fixedTitle)];
+          })
+        );
+      });
+      setTitleArrays(newTitleArray);
     } else {
-      setTitleArrays([firstTitles, secondTitles, thirdTitles]);
+      setTitleArrays([firstTitles, secondTitles, thirdTitles, fourthTitles]);
     }
 
     setClosedEye(closedEye ? false : true);
+  };
 
-    // if (closedEye)
-    console.log();
+  const arrowHandler = () => {
+    setArrowDirection(arrowDirection === "up" ? "left" : "up");
   };
 
   const miniCardHandler = (title, name) => {
@@ -85,32 +93,47 @@ const Information = (props) => {
       )[0][handler.getAPICounterPart(title)];
 
       const titleSection = titleNumberPair[title];
-
+      let chosenTitles;
       switch (titleSection) {
         case 1:
-          firstTitles[firstTitles.indexOf(title)] =
-            profileObject === null || profileObject === ""
-              ? "N/A"
-              : profileObject;
+          chosenTitles = firstTitles;
           break;
         case 2:
-          secondTitles[secondTitles.indexOf(title)] =
-            profileObject === null || profileObject === ""
-              ? "N/A"
-              : profileObject;
+          chosenTitles = secondTitles;
+
           break;
         case 3:
-          thirdTitles[thirdTitles.indexOf(title)] =
-            profileObject === null || profileObject === ""
-              ? "N/A"
-              : profileObject;
+          chosenTitles = thirdTitles;
+          break;
+        case 4:
+          chosenTitles = fourthTitles;
+
           break;
         default:
           break;
       }
-      setTitleArrays([firstTitles, secondTitles, thirdTitles]);
+      chosenTitles[chosenTitles.indexOf(title)] =
+        profileObject === null || profileObject === "" ? "N/A" : profileObject;
+      setTitleArrays([firstTitles, secondTitles, thirdTitles, fourthTitles]);
+      console.log(titleArrays);
     }
   };
+
+  // Failed To Implement Horizontal Scrolling... Ask the user to press shift while scrolling or
+  // click on the mouse wheel.
+  // const wheelHandler = (e) => {
+  //   // console.log(e);
+  //   e.preventDefault();
+  //   if (arrowDirection === "left") {
+  //     const container = document.querySelector(".left");
+  //     const containerScrollPosition = container.scrollLeft;
+  //     const miniCardScroll = document.querySelector(".miniCard");
+  //     console.log(miniCardScroll);
+  //     miniCardScroll.scrollTo({
+  //       left: miniCardScroll.scrollLeft + e.deltaY,
+  //     });
+  //   }
+  // };
 
   return (
     <Card
@@ -119,17 +142,24 @@ const Information = (props) => {
       child={
         <>
           <div className="contentHeader">
-            <h3>Information</h3>
-            <button onClick={eyeHandler}>
-              {closedEye ? (
-                <ion-icon name="eye-outline"></ion-icon>
+            <button onClick={arrowHandler} className="button">
+              {arrowDirection === "up" ? (
+                <ion-icon name="arrow-up-outline"></ion-icon>
               ) : (
+                <ion-icon name="arrow-back-outline"></ion-icon>
+              )}
+            </button>
+            <h3>Information</h3>
+            <button onClick={eyeHandler} className="button">
+              {closedEye ? (
                 <ion-icon name="eye-off-outline"></ion-icon>
+              ) : (
+                <ion-icon name="eye-outline"></ion-icon>
               )}
             </button>
           </div>
           <div className={`informationContent ${styleFunction()}`}>
-            <div className="slider">
+            <div className={`slider ${arrowDirection}`}>
               {titleArrays.map((titles) => {
                 return (
                   <InformationContent
