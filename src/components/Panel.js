@@ -2,7 +2,7 @@ import { useState } from "react";
 import PanelContent from "./PanelContent";
 
 const Panel = (props) => {
-  const [style, setStyle] = useState("collapsed");
+  const [style, setStyle] = useState("expanded");
 
   const imgClickHandler = (e) => {
     e.stopPropagation();
@@ -13,7 +13,8 @@ const Panel = (props) => {
 
   return (
     <div
-      className={`panel ${style}`}
+      //bodySlide is experimental
+      className={`panel bodySlide ${style}`}
       onClick={() => setStyle(style === "expanded" ? "collapsed" : "expanded")}
     >
       <div className="imageTextHolder">

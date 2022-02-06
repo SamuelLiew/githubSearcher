@@ -70,8 +70,10 @@ const Information = (props) => {
             return profileObject[handler.getAPICounterPart(fixedTitle)] ===
               null ||
               profileObject[handler.getAPICounterPart(fixedTitle)] === ""
-              ? "N/A"
-              : profileObject[handler.getAPICounterPart(fixedTitle)];
+              ? `${fixedTitle}: N/A`
+              : `${fixedTitle}: ${
+                  profileObject[handler.getAPICounterPart(fixedTitle)]
+                }`;
           })
         );
       });

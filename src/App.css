@@ -6,20 +6,39 @@
 
 body {
   font-family: "Roboto", sans-serif;
-  display: flex;
+  margin: 0;
+  font-size: 2.5vh;
+  /* -webkit-overflow-scrolling:touch; */
+  /* -ms-overflow-style: none; */
+
+  /* height: auto;
+  width: auto; */
+  /* display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0;
-  overflow-x: hidden;
-  height: 100vh;
+  overflow-x: hidden;*/
+  /* height: 100vh;
+  width: 100vh; */
 }
 
-.container {
-  text-align: center;
+button {
+  border-style: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+ion-icon {
+  font-size: 2.5vh;
+}
+
+.header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 35vh;
+  align-items: center;
 }
 
 .title {
@@ -29,15 +48,13 @@ body {
 
 .userNameForm {
   display: flex;
-  align-self: center;
-  margin-bottom: 2vh;
+  justify-content: center;
 }
 
 .userNameForm button {
   margin: 0;
   font-size: 2vh;
   padding: none;
-  border-style: none;
   background-color: #fff;
   border-bottom: gray solid 1px;
 }
@@ -60,20 +77,40 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  border: 1px solid gray;
-  border-radius: 10px;
-  transition: flex 5s;
-  margin-bottom: 10px;
-  transition: height 3s, width 5s;
-  align-self: center;
-  animation: fade-in 2s;
   overflow: hidden;
+}
+
+.bodySlider {
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  scroll-snap-type: both mandatory;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.bodySlider::-webkit-scrollbar {
+  display: none;
+}
+
+.bodySlide {
+  padding: 2vh;
+
+  scroll-snap-stop: always;
+  scroll-snap-align: start;
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  scroll-behavior: smooth;
 }
 
 .imageTextHolder {
   display: flex;
   justify-content: flex-start;
-  padding: 5px;
+  margin-bottom: 3%;
   align-items: center;
 }
 
@@ -91,15 +128,13 @@ body {
 .contentContainer {
   display: flex;
   flex-direction: column;
+  height: 90%;
 }
 
 .Card {
   width: inherit;
   display: flex;
   flex-direction: column;
-  margin: 5px;
-  /* border: 1px solid #ffd700; */
-  border-radius: 10px;
   transition: flex 2s;
   justify-content: flex-start;
   align-items: center;
@@ -108,31 +143,26 @@ body {
 
 .contentHeader {
   width: 100%;
-  height: auto;
   justify-content: space-evenly;
   display: flex;
   align-items: center;
 }
 
 .contentHeader h3 {
-  opacity: 0;
-  transition: opacity 4s;
   height: 100%;
 }
 .button {
   width: 12%;
   border-style: none;
   background-color: white;
-
-  /* height: 80%; */
 }
 
 .informationContent {
   width: 100%;
   height: 90%;
   display: flex;
-  opacity: 0;
-  transition: opacity 1s;
+  /* opacity: 0; */
+  /* transition: opacity 1s; */
   justify-content: space-evenly;
   align-items: center;
 }
@@ -152,14 +182,12 @@ body {
 }
 
 .miniCard {
-  width: 90%;
+  width: 100%;
   padding: 0;
   flex: 1;
   justify-content: center;
-  transition: transform 1s;
-  /* border-color: purple; */
-  border: 1px purple solid;
-  margin: 0px, auto;
+  /* border: 1px purple solid; */
+  /* margin: 0px, auto; */
 }
 
 .slider {
@@ -172,7 +200,8 @@ body {
   scrollbar-width: none;
   scroll-snap-type: x mandatory;
   border: solid gray;
-  border-radius: 10px;
+
+  /* border-radius: 10px; */
   border-width: 0px 1px;
 }
 
@@ -181,6 +210,8 @@ body {
 }
 
 .slide {
+  padding: 0px 2%;
+  margin: 0px 3%;
   /* margin-top: 10%; */
   /* margin-bottom: 20%; */
   scroll-snap-stop: always;
@@ -202,168 +233,98 @@ body {
   }
 }
 
-@media (min-width: 0px) {
-  .panel,
-  .imageTextHolder {
-    width: 93vw;
-    height: 10vh;
-  }
-
-  .expanded {
-    width: 98vw;
-    height: 100vh;
-    transition: height 3s, width 3s;
-  }
-
+@media (min-width: 320px) {
   .imageTextHolder img {
     height: 8vh;
   }
 
-  .contentContainer {
+  /* .contentContainer {
     height: calc(100vh - 10vh);
-  }
+  } */
 
   .contentHeader h3 {
     margin: 0.5vh;
     font-size: 3vh;
   }
 
-  .buttonComplement,
   .button {
     width: 12%;
   }
 }
 
-@media (min-width: 480px) {
-  .panel,
-  .imageTextHolder {
-    width: 90vw;
-    height: 9vh;
-  }
-
-  .expanded {
-    width: 93vw;
-    height: 93vh;
-  }
-
+@media (min-width: 481px) {
   .imageTextHolder img {
     height: 7vh;
   }
 
-  .contentContainer {
+  /* .contentContainer {
     height: calc(93vh - 9vh);
-  }
-  .buttonComplement,
+  } */
   .button {
     width: 10%;
   }
 }
 
-@media (min-width: 700px) {
-  .panel,
-  .imageTextHolder {
-    width: 80vw;
-    height: 9vh;
-  }
-
-  .expanded {
-    width: 91vw;
-    height: 91vh;
-  }
-
-  .contentContainer {
+@media (min-width: 769px) {
+  /* .contentContainer {
     height: calc(91vh - 9vh);
-  }
-  .buttonComplement,
+  } */
   .button {
     width: 6%;
   }
 }
 
 @media (min-width: 1024px) {
-  .panel,
-  .imageTextHolder {
-    width: 75vw;
-    height: 9vh;
-  }
-
-  .expanded {
-    width: 90vw;
-    height: 90vh;
-  }
-
-  .contentContainer {
+  /* .contentContainer {
     height: calc(90vh - 9vh);
-  }
+  } */
   .contentHeader {
     justify-content: center;
   }
-  .buttonComplement,
   .button {
     width: 4%;
   }
 }
 
-@media (min-width: 1280px) {
-  .panel,
-  .imageTextHolder {
-    width: 50vw;
-    height: 9vh;
-  }
-
-  .expanded {
-    width: 70vw;
-    height: 85vh;
-  }
-
-  .contentContainer {
+@media (min-width: 1201px) {
+  /* .contentContainer {
     height: calc(85vh - 9vh);
-  }
+  } */
 }
 
-@media (min-width: 1920px) {
-  .panel,
-  .imageTextHolder {
-    width: 40vw;
-    height: 8.5vh;
-  }
-
-  .expanded {
-    width: 50vw;
-    height: 80vh;
-  }
-
-  .contentContainer {
-    height: calc(80vh - 8.5vh);
-  }
+.panel,
+.imageTextHolder {
+  width: 100%;
+  height: 10vh;
 }
-
-ion-icon {
-  font-size: 2.5vh;
+.expanded {
+  height: 100%;
+  width: 100%;
 }
-
 .expanded .contentContainer {
-  display: flex;
-  position: relative;
-  visibility: visible;
-  opacity: 1;
-  transition: opacity 2s, visibility 0s;
+  opacity: 100%;
+  height: 100%;
+  transition: opacity 2s, height 1.5s;
+}
+.collapsed {
+  height: 100%;
+  transition: height 1.5s;
+}
+.collapsed .contentContainer {
+  height: 0%;
+  opacity: 0%;
+  transition: opacity 1.5s, height 1.5s;
 }
 
-.expanded .contentContainer .Card .contentHeader h3 {
-  opacity: 1;
-  transition: opacity 4s;
-}
-
-.panel .contentContainer {
-  opacity: 0;
-  transition: opacity 1.5s;
-}
-
-.expanded .contentContainer,
-.visible {
-  opacity: 1;
+.active .informationContent {
+  opacity: 100%;
   transition: opacity 2s;
+}
+
+.inactive .informationContent {
+  height: 0%;
+  opacity: 0%;
+  transition: opacity 2s, height 4s;
 }
 
 .up {
@@ -373,14 +334,10 @@ ion-icon {
   flex-direction: row;
 }
 
-.trulyCollapse,
-.trulyCollapse img,
-.trulyCollapse h2 {
-  margin: 0;
+.trulyCollapse {
   opacity: 0;
-  height: 0;
   width: 0;
-  transition: height 1s, width 1s, opacity 2s, margin 2s;
+  transition: width 1.5s, opacity 1s, margin 1.5s;
 }
 
 .active {
@@ -388,5 +345,5 @@ ion-icon {
 }
 
 .inactive {
-  flex: 0.5;
+  flex: 0.3;
 }

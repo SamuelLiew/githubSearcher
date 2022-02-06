@@ -28,9 +28,12 @@ const App = () => {
   };
 
   return (
-    <div className="container">
-      <h1 className="title">Welcome!</h1>
-      <Form data={data} onSubmit={submitHandler}></Form>
+    <div className="bodySlider">
+      <div className="bodySlide header">
+        <h1 className="title">Welcome!</h1>
+        <Form data={data} onSubmit={submitHandler}></Form>
+      </div>
+
       <List
         profiles={data}
         deleteHandler={deleteHandler}
