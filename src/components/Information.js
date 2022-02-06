@@ -140,7 +140,7 @@ const Information = (props) => {
             </button>
             <h3>Information</h3>
             <button onClick={eyeHandler} className="button">
-              {closedEye ? (
+              {closedEye === true ? (
                 <ion-icon name="eye-off-outline"></ion-icon>
               ) : (
                 <ion-icon name="eye-outline"></ion-icon>
