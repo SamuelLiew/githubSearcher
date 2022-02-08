@@ -1,6 +1,5 @@
 import { useState } from "react";
-import Followers from "./Followers";
-import Followings from "./Followings";
+import FollowerIngs from "./FollowerIngs";
 import Information from "./Information";
 import Repositories from "./Repositories";
 import Stars from "./Stars";
@@ -20,14 +19,14 @@ const PanelContent = (props) => {
         onClick={() => setWhoIsActive("information")}
         activeCard={whoIsActive}
       />
-      <Followers
-        onClick={() => setWhoIsActive("followers")}
+      <FollowerIngs
+        onClick={() => setWhoIsActive("followerings")}
         activeCard={whoIsActive}
       />
-      <Followings
+      {/* <Followings
         onClick={() => setWhoIsActive("followings")}
         activeCard={whoIsActive}
-      />
+      /> */}
       <Repositories
         onClick={() => setWhoIsActive("repositories")}
         activeCard={whoIsActive}

@@ -13,8 +13,8 @@ const Information = (props) => {
   const handler = new APIHandler();
   const firstTitles = ["Bio", "Blog", "Company", "Created"];
   const secondTitles = ["Email", "Followers", "Following", "Gists"];
-  const thirdTitles = ["Github", "Name", "Twitter", "Type"];
-  const fourthTitles = ["Updated"];
+  const thirdTitles = ["Github", "Hireable", "Location", "Name"];
+  const fourthTitles = ["Repos", "Twitter", "Type", "Updated"];
   const everyTitle = [
     ...firstTitles,
     ...secondTitles,
@@ -38,10 +38,6 @@ const Information = (props) => {
     props.activeCard === "information" ? "active" : "inactive";
   const clickHandler = () => {
     props.onClick();
-  };
-
-  const styleFunction = () => {
-    return props.activeCard === "information" ? "visible" : "";
   };
 
   const eyeHandler = (e) => {
@@ -70,8 +66,10 @@ const Information = (props) => {
             return profileObject[handler.getAPICounterPart(fixedTitle)] ===
               null ||
               profileObject[handler.getAPICounterPart(fixedTitle)] === ""
-              ? "N/A"
-              : profileObject[handler.getAPICounterPart(fixedTitle)];
+              ? `${fixedTitle}: N/A`
+              : `${fixedTitle}: ${
+                  profileObject[handler.getAPICounterPart(fixedTitle)]
+                }`;
           })
         );
       });
@@ -89,7 +87,7 @@ const Information = (props) => {
 
   const miniCardHandler = (title, name) => {
     if (handler.getAPICounterPart(title) !== undefined) {
-      const profileObject = props.profiles.filter(
+      const clickedMinicardValue = props.profiles.filter(
         (profile) => profile["login"] === name
       )[0][handler.getAPICounterPart(title)];
 
@@ -100,9 +98,12 @@ const Information = (props) => {
         thirdTitles,
         fourthTitles,
       ];
+      //chosenTitles is just to speed up the search using hash map.
       let chosenTitles = originalTitleArrays[titleSection - 1];
       chosenTitles[chosenTitles.indexOf(title)] =
-        profileObject === null || profileObject === "" ? "N/A" : profileObject;
+        clickedMinicardValue === null || clickedMinicardValue === ""
+          ? "N/A"
+          : `${clickedMinicardValue}`;
       setTitleArrays([firstTitles, secondTitles, thirdTitles, fourthTitles]);
     }
   };
@@ -111,7 +112,6 @@ const Information = (props) => {
     <Card
       status={activeOrInactive}
       onClick={clickHandler}
-      onTouchStart={clickHandler}
       child={
         <>
           <div className="contentHeader">
@@ -131,7 +131,7 @@ const Information = (props) => {
               )}
             </button>
           </div>
-          <div className={`informationContent ${styleFunction()}`}>
+          <div className="informationContent">
             <div className={`slider ${props.arrowDirection}`}>
               {titleArrays.map((titles) => {
                 return (
