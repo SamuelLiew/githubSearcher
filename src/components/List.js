@@ -7,6 +7,8 @@ const List = (props) => {
     props.deleteHandler(elementName);
   };
   const updateProfile = (updatedObject) => {
+    // input: an array
+    // [loginName, titleToBeUpdated, theData]
     props.updateProfile(updatedObject);
   };
   return (
