@@ -1,30 +1,15 @@
 import { useState } from "react";
-import axios from "axios";
+import APIHandler from "../APIHandler";
 
 const Form = (props) => {
   const [userName, setUserName] = useState("");
+  const handler = new APIHandler();
 
   const submitHandler = async (e) => {
     e.preventDefault();
     let alreadyExists = false;
-    try {
-      const resp = await axios.get(`https://api.github.com/users/${userName}`);
-      for (let i of props.data) {
-        if (alreadyExists) {
-          break;
-        }
-        i["login"] === resp["data"]["login"]
-          ? (alreadyExists = true)
-          : (alreadyExists = false);
-      }
 
-      if (!alreadyExists) {
-        props.onSubmit(resp["data"]);
-      }
-    } catch (err) {
-      alert("Name Doesn't Exist");
-    }
-
+    handler.formHandler(props.data, props.onSubmit, userName, alreadyExists);
     setUserName("");
   };
 

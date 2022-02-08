@@ -4,13 +4,29 @@ import Form from "./components/Form";
 import "./App.css";
 
 const App = () => {
+  // const [data, setData] = useState({});
   const [data, setData] = useState([]);
 
   const submitHandler = (profilesObject) => {
     setData([profilesObject, ...data]);
+    // setData({profilesObject['login']:{ Information: profilesObject, Following: {}, Follower: {} }, ...data})
+    const test = {
+      lol: { Information: {}, Following: {}, Follower: {} },
+      take: { Information: {}, Following: {}, Follower: {} },
+    };
+    console.log({
+      wow: { Information: {}, Following: {}, Follower: {} },
+      ...test,
+    });
+    console.log(test["bom"] === undefined);
   };
 
   const deleteHandler = (elementName) => {
+    /**
+     * let placeholder = data;
+     * delete placeholder[elementName];
+     * setData(placeholder);
+     */
     setData(
       data.filter((i) => {
         return i["login"] !== elementName;
@@ -19,6 +35,11 @@ const App = () => {
   };
 
   const updateProfile = (updatedObject) => {
+    // input: an array
+    // [loginName, titleToBeUpdated, theData]
+    // updatedData = data
+    // updatedData[loginName][titleToBeUpdated] = theData;
+    // setData(updatedData)
     const objectToChange = data.filter((i) => {
       return i["login"] === updatedObject["login"];
     });
