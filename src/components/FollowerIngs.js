@@ -14,8 +14,8 @@ const FollowerIngs = (props) => {
     const [viewChoice, setViewChoice] = useState(1);
     const [title, setTitle] = useState("Following");
     const [clicked, setClicked] = useState(false);
-    const [currentFollowingPage, setCurrentFollowingPage] = useState(1);
-    const [currentFollowersPage, setCurrentFollowersPage] = useState(1);
+    // const [currentFollowingPage, setCurrentFollowingPage] = useState(1);
+    // const [currentFollowersPage, setCurrentFollowersPage] = useState(1);
     const [subtractedProfiles, setSubtractedProfiles] = useState({});
     const [filteredArray, setFilteredArray] = useState([]);
     const activeOrInactive =
@@ -28,7 +28,7 @@ const FollowerIngs = (props) => {
                 props.profile["Following"],
                 props.updateProfile,
                 props.profile["Information"]["login"],
-                currentFollowingPage
+                1
             )
             await setFilteredArray(following.filter((dataItem) => {
                 return props.allProfiles[dataItem['login']] === undefined;
@@ -38,7 +38,7 @@ const FollowerIngs = (props) => {
                 props.profile["Followers"],
                 props.updateProfile,
                 props.profile["Information"]["login"],
-                currentFollowersPage
+                1
             )
             setClicked(true);
 
