@@ -1,79 +1,154 @@
-import { useState } from "react";
+import {useState} from "react";
+import APIHandler from "../APIHandler";
 import Card from "./Card";
 import FollowerContent from "./FollowerContent";
 import FollowingContent from "./FollowingContent";
 
 const FollowerIngs = (props) => {
-  const views = {
-    1: <ion-icon name="albums-outline"></ion-icon>,
-    2: <ion-icon name="apps-outline"></ion-icon>,
-    3: <ion-icon name="list-outline"></ion-icon>,
-  };
-  const [viewChoice, setViewChoice] = useState(1);
-  const [title, setTitle] = useState("Following");
-  const activeOrInactive =
-    props.activeCard === "followerings" ? "active" : "inactive";
+    const views = {
+        1: <ion-icon name="albums-outline"/>,
+        2: <ion-icon name="apps-outline"/>,
+        3: <ion-icon name="list-outline"/>,
+    };
+    const handler = new APIHandler();
+    const [viewChoice, setViewChoice] = useState(1);
+    const [title, setTitle] = useState("Following");
+    const [clicked, setClicked] = useState(false);
+    const [currentFollowingPage, setCurrentFollowingPage] = useState(1);
+    const [currentFollowersPage, setCurrentFollowersPage] = useState(1);
+    const [subtractedProfiles, setSubtractedProfiles] = useState({});
+    const [filteredArray, setFilteredArray] = useState([]);
+    const activeOrInactive =
+        props.activeCard === "followerings" ? "active" : "inactive";
 
-  const clickHandler = (e) => {
-    props.onClick();
-  };
+    const clickHandler = async () => {
+        props.onClick();
+        if (clicked === false) {
+            const following = await handler.followingHandler(
+                props.profile["Following"],
+                props.updateProfile,
+                props.profile["Information"]["login"],
+                currentFollowingPage
+            )
+            await setFilteredArray(following.filter((dataItem) => {
+                return props.allProfiles[dataItem['login']] === undefined;
 
-  const viewHandler = () => {
-    setViewChoice(viewChoice === 3 ? 1 : viewChoice + 1);
-  };
+            }))
+            await handler.followersHandler(
+                props.profile["Followers"],
+                props.updateProfile,
+                props.profile["Information"]["login"],
+                currentFollowersPage
+            )
+            setClicked(true);
 
-  const switchHandler = () => {
-    setTitle(title === "Following" ? "Followers" : "Following");
-  };
+        }
+        console.log(props.profile)
+    };
 
-  /**
-   * This Component will manage the Followers and Followings
-   * There will be a Following array that stores all the Followings
-   *
-   * The problem is that there will be multiple panels and each of them
-   * have their own followers and followings...
-   *
-   * which means that the List component must manage the Followers and Followings
-   * Using a Dictionary
-   * {panel_name:Followers:[array of followers], Following: [array of following]}, next_panel:...}
-   *
-   * If this is the case, then we might as well combine the original array with the new dictionary
-   * {panel_name:{Information:[array of information], Followers:[array of followers],
-   *              Following: [array of following]}, next_panel:...}
-   *
-   * There will be a Followers array that stores all the Followers
-   *
-   */
+    const viewHandler = () => {
+        if (viewChoice === 1 || viewChoice === 2) {
+            setFilteredArray([...props.profile[title].filter((dataItem) => {
+                return props.allProfiles[dataItem['login']] === undefined
+            })])
+        } else if (viewChoice === 3) {
+            const together = {...props.allProfiles, ...subtractedProfiles}
+            setFilteredArray([...props.profile[title].filter((dataItem) => {
+                return together[dataItem['login']] === undefined;
+            })])
+        }
+        setViewChoice(viewChoice === 3 ? 1 : viewChoice + 1);
+    };
 
-  return (
-    <Card
-      status={activeOrInactive}
-      onClick={(e) => clickHandler(e)}
-      child={
-        <>
-          <div className="contentHeader">
-            <button onClick={viewHandler} className="button">
-              {views[viewChoice]}
-            </button>
-            <h3>{title}</h3>
-            <button onClick={switchHandler} className="button">
-              <ion-icon name="swap-vertical-outline"></ion-icon>
-            </button>
-          </div>
-          <div className="followerIngContent">
-            {title === "Following" ? (
-              <FollowingContent viewChoice={viewChoice} />
-            ) : (
-              <FollowerContent viewChoice={viewChoice} />
-            )}
-            {/* Allow three different views, all of them having the ability to slide
+    const viewOnSwitchHandler = (newTitle) => {
+        if (viewChoice === 2 || viewChoice === 3) {
+            setFilteredArray([...props.profile[newTitle].filter((dataItem) => {
+                return props.allProfiles[dataItem['login']] === undefined
+            })])
+        } else if (viewChoice === 1) {
+            const together = {...props.allProfiles, ...subtractedProfiles}
+            setFilteredArray([...props.profile[newTitle].filter((dataItem) => {
+                return together[dataItem['login']] === undefined;
+            })])
+        }
+    }
+
+    const switchHandler = (e) => {
+        e.stopPropagation();
+        const holder = title === "Following" ? "Followers" : "Following";
+        viewOnSwitchHandler(holder);
+        setTitle(holder);
+    };
+
+    const onAddButtonClickedHandler = (name) => {
+        handler.addHandler(props.allProfiles, props.onAdd, name, false)
+
+    };
+
+    const onSubButtonClickedHandler = (name) => {
+        setSubtractedProfiles(prevState => ({
+            ...prevState,
+            [name]: true
+        }))
+    };
+
+    return (
+        <Card
+            status={activeOrInactive}
+            onClick={(e) => clickHandler(e)}
+            child={
+                <>
+                    <div className="contentHeader">
+                        <button onClick={viewHandler} className="button">
+                            {views[viewChoice]}
+                        </button>
+                        <h3>{title}</h3>
+                        <button onClick={switchHandler} className="button">
+                            <ion-icon name="swap-vertical-outline"/>
+                        </button>
+                    </div>
+                    <div className="followerIngContent">
+                        {/* Allow three different views, all of them having the ability to slide
             First View is the Album Outline Second View is the App Outline Third
             View is the List Outline */}
-          </div>
-        </>
-      }
-    />
-  );
+                        {/*
+
+            In summary, every Addition will lead to the removal
+            of that certain profile from the objects list.
+
+            How to handle data? Have an object placeholder here in this component. This
+            object will handle the amount of data available at once. Album View: 1 Max.
+            App View and List View: 6 in each container, 3 containers max.
+            */}
+                        {title === "Following" ? (
+                            <FollowingContent
+                                viewChoice={viewChoice}
+                                following={props.profile[title]}
+                                filteredArray={filteredArray}
+                                setFilteredArray={(array) => setFilteredArray(array)}
+                                allProfiles={props.allProfiles}
+                                subtractedProfiles={subtractedProfiles}
+                                onAddButtonClicked={(name) => onAddButtonClickedHandler(name)}
+                                onSubButtonClicked={(name) => onSubButtonClickedHandler(name)}
+                            />
+                        ) : (
+                            <FollowerContent
+                                viewChoice={viewChoice}
+                                followers={props.profile[title]}
+                                filteredArray={filteredArray}
+                                setFilteredArray={(array) => setFilteredArray(array)}
+                                allProfiles={props.allProfiles}
+                                subtractedProfiles={subtractedProfiles}
+                                onAddButtonClicked={(name) => onAddButtonClickedHandler(name)}
+                                onSubButtonClicked={(name) => onSubButtonClickedHandler(name)}
+
+                            />
+                        )}
+                    </div>
+                </>
+            }
+        />
+    );
 };
 
 export default FollowerIngs;

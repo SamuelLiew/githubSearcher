@@ -8,10 +8,7 @@ const InformationContent = (props) => {
     return key;
   };
   const miniCardHandler = (e) => {
-    props.miniCardHandler(
-      e.target.innerText.trim(),
-      e.target.parentNode.parentNode.parentNode.parentNode.parentNode.previousSibling.innerText.trim()
-    );
+    props.miniCardHandler(e.target.innerText.trim());
   };
   return (
     <div className={`miniCardContainer slide`} id={props.id}>

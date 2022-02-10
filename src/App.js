@@ -1,69 +1,61 @@
-import { useState } from "react";
+import {useState} from "react";
 import List from "./components/List";
 import Form from "./components/Form";
 import "./App.css";
 
 const App = () => {
-  // const [data, setData] = useState({});
-  const [data, setData] = useState([]);
+    const [data, setData] = useState({});
 
-  const submitHandler = (profilesObject) => {
-    setData([profilesObject, ...data]);
-    // setData({profilesObject['login']:{ Information: profilesObject, Following: {}, Follower: {} }, ...data})
-    const test = {
-      lol: { Information: {}, Following: {}, Follower: {} },
-      take: { Information: {}, Following: {}, Follower: {} },
+    const addHandler = (profileObject) => {
+        let newData = {};
+        newData[profileObject["login"]] = {
+            Information: profileObject,
+            Following: [],
+            Followers: [],
+            Repositories: [],
+            Stars: [],
+        };
+        setData({...data, ...newData});
     };
-    console.log({
-      wow: { Information: {}, Following: {}, Follower: {} },
-      ...test,
-    });
-    console.log(test["bom"] === undefined);
-  };
 
-  const deleteHandler = (elementName) => {
-    /**
-     * let placeholder = data;
-     * delete placeholder[elementName];
-     * setData(placeholder);
-     */
-    setData(
-      data.filter((i) => {
-        return i["login"] !== elementName;
-      })
+    const deleteHandler = (elementName) => {
+        let placeholder = data;
+        delete placeholder[elementName];
+        setData({...placeholder});
+    };
+
+    const updateProfile = (dataArray) => {
+        console.log(data)
+        const [loginName, titleToBeUpdated, theData] = dataArray;
+
+        setData(prevState => ({
+                ...prevState,
+                [loginName]: {
+                    ...prevState[loginName],
+                    [titleToBeUpdated]: [...theData]
+                }
+            }
+        ))
+        // let updatedData = {...data};
+        // updatedData[loginName][titleToBeUpdated] = theData;
+        // setData({...updatedData});
+    };
+
+    return (
+        <div className="bodySlider">
+            <div className="bodySlide header">
+                <h1 className="title">Welcome!</h1>
+                <Form data={data} onSubmit={addHandler}/>
+            </div>
+
+            <List
+                profiles={data}
+                deleteHandler={deleteHandler}
+                updateProfile={updateProfile}
+                onAdd={addHandler}
+            />
+        </div>
     );
-  };
-
-  const updateProfile = (updatedObject) => {
-    // input: an array
-    // [loginName, titleToBeUpdated, theData]
-    // updatedData = data
-    // updatedData[loginName][titleToBeUpdated] = theData;
-    // setData(updatedData)
-    const objectToChange = data.filter((i) => {
-      return i["login"] === updatedObject["login"];
-    });
-    const updatedData = data;
-    updatedData[data.indexOf(objectToChange)] = updatedObject;
-    setData(updatedData);
-  };
-
-  return (
-    <div className="bodySlider">
-      <div className="bodySlide header">
-        <h1 className="title">Welcome!</h1>
-        <Form data={data} onSubmit={submitHandler}></Form>
-      </div>
-
-      <List
-        profiles={data}
-        deleteHandler={deleteHandler}
-        updateProfile={updateProfile}
-      />
-      {/* <button onClick={showFollowersHandler}>List the Followers</button> */}
-      {/* {display && <ProfilesList profile={data[0]["followers_url"]} />} */}
-    </div>
-  );
 };
 
 export default App;
