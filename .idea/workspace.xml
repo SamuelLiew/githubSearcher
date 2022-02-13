@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="733a40b6-1863-4827-adf0-33e55fe10ca2" name="Changes" comment="Successfully changed the main data structure from Arrays to Hashmap.&#10;Implemented the Album View. Added support for the Followers option.">
+    <list default="true" id="733a40b6-1863-4827-adf0-33e55fe10ca2" name="Changes" comment="Removed Warnings">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/APIHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/APIHandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FollowerContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FollowerContent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/FollowerIngs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FollowerIngs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FollowingContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FollowingContent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ViewAlbum.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ViewAlbum.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ViewApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ViewApp.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +71,8 @@
       <workItem from="1644372179835" duration="16865000" />
       <workItem from="1644425821022" duration="1097000" />
       <workItem from="1644446653871" duration="10479000" />
-      <workItem from="1644526419549" duration="632000" />
+      <workItem from="1644526419549" duration="13382000" />
+      <workItem from="1644717028607" duration="18958000" />
     </task>
     <task id="LOCAL-00001" summary="Successfully changed the main data structure from Arrays to Hashmap.&#10;Implemented the Album View. Added support for the Followers option.">
       <created>1644457667399</created>
@@ -73,7 +81,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644457667399</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Removed Warnings">
+      <created>1644527210731</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1644527210731</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -92,7 +107,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Successfully changed the main data structure from Arrays to Hashmap.&#10;Implemented the Album View. Added support for the Followers option." />
-    <option name="LAST_COMMIT_MESSAGE" value="Successfully changed the main data structure from Arrays to Hashmap.&#10;Implemented the Album View. Added support for the Followers option." />
+    <MESSAGE value="Removed Warnings" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed Warnings" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -43,7 +43,6 @@ const FollowerIngs = (props) => {
             setClicked(true);
 
         }
-        console.log(props.profile)
     };
 
     const viewHandler = () => {
@@ -81,8 +80,7 @@ const FollowerIngs = (props) => {
     };
 
     const onAddButtonClickedHandler = (name) => {
-        handler.addHandler(props.allProfiles, props.onAdd, name, false)
-
+        handler.addHandler(props.allProfiles, props.onAdd, name, false, props.profile["Information"]["login"])
     };
 
     const onSubButtonClickedHandler = (name) => {
@@ -124,6 +122,7 @@ const FollowerIngs = (props) => {
                             <FollowingContent
                                 viewChoice={viewChoice}
                                 following={props.profile[title]}
+                                title={title}
                                 filteredArray={filteredArray}
                                 setFilteredArray={(array) => setFilteredArray(array)}
                                 allProfiles={props.allProfiles}
@@ -135,6 +134,7 @@ const FollowerIngs = (props) => {
                             <FollowerContent
                                 viewChoice={viewChoice}
                                 followers={props.profile[title]}
+                                title={title}
                                 filteredArray={filteredArray}
                                 setFilteredArray={(array) => setFilteredArray(array)}
                                 allProfiles={props.allProfiles}

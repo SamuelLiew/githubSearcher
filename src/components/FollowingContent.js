@@ -16,7 +16,9 @@ const FollowingContent = (props) => {
                 />
             ) : props.viewChoice === 2 ? (
                 <ViewApp
+                    allProfiles={props.allProfiles}
                     following={props.following}
+                    title={props.title}
                     onAddButtonClicked={(name) => props.onAddButtonClicked(name)}
                 />
             ) : (

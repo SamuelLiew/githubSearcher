@@ -34,12 +34,16 @@ const ViewAlbum = (props) => {
     }
     return (
         <div className="viewAlbum">
-            <button onClick={subHandler}>-</button>
+            <button onClick={subHandler}>
+                <ion-icon name="close-circle-outline"/>
+            </button>
             <div className="albumContent">
                 <img src={imageHandler()} alt={'No More!'}/>
                 <div>{divHandler()}</div>
             </div>
-            <button onClick={addHandler}>+</button>
+            <button onClick={addHandler}>
+                <ion-icon name="add-circle-outline"/>
+            </button>
         </div>
     );
 };

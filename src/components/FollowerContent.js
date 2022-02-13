@@ -18,13 +18,14 @@ const FollowerContent = (props) => {
                 />
             ) : props.viewChoice === 2 ? (
                 <ViewApp
-                    following={props.following}
+                    filteredArray={props.filteredArray}
+                    title={props.title}
+                    allProfiles={props.allProfiles}
                     followers={props.followers}
                     onAddButtonClicked={(name) => props.onAddButtonClicked(name)}
                 />
             ) : (
                 <ViewList
-                    following={props.following}
                     followers={props.followers}
                     onAddButtonClicked={(name) => props.onAddButtonClicked(name)}
                 />

@@ -6,7 +6,7 @@ import "./App.css";
 const App = () => {
     const [data, setData] = useState({});
 
-    const addHandler = (profileObject) => {
+    const addHandler = (profileObject, caller) => {
         let newData = {};
         newData[profileObject["login"]] = {
             Information: profileObject,
@@ -15,7 +15,20 @@ const App = () => {
             Repositories: [],
             Stars: [],
         };
-        setData({...data, ...newData});
+
+        if (caller === undefined) {
+            setData({...newData, ...data});
+        } else {
+            let answer = {};
+            for (let i in data) {
+                answer[i] = data[i];
+                if (i === caller) {
+                    answer[profileObject['login']] = newData[profileObject['login']];
+                }
+            }
+            setData({...answer});
+
+        }
     };
 
     const deleteHandler = (elementName) => {
@@ -25,7 +38,6 @@ const App = () => {
     };
 
     const updateProfile = (dataArray) => {
-        console.log(data)
         const [loginName, titleToBeUpdated, theData] = dataArray;
 
         setData(prevState => ({
@@ -36,9 +48,6 @@ const App = () => {
                 }
             }
         ))
-        // let updatedData = {...data};
-        // updatedData[loginName][titleToBeUpdated] = theData;
-        // setData({...updatedData});
     };
 
     return (

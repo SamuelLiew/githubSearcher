@@ -1,5 +1,6 @@
 import axios from "axios";
 
+const headers = {}
 const titleAPINamePair = {
     Bio: "bio",
     Blog: "blog",
@@ -23,22 +24,18 @@ class APIHandler {
     async followingHandler(followingList, updateProfile, userName, pageNumber) {
         try {
             let alreadyExists;
-
-            console.log(
-                `https://api.github.com/users/${userName}/following?per_page=100&page=${pageNumber}`
-            );
             const resp = await axios.get(
-                `https://api.github.com/users/${userName}/following?per_page=100&page=${pageNumber}`
+                `https://api.github.com/users/${userName}/following?per_page=100&page=${pageNumber}`,
+                {
+                    headers: headers,
+                }
             );
-            console.log(resp['data'])
             alreadyExists = followingList[0] !== undefined;
             if (!alreadyExists) {
-                //loginName, titleToBeUpdated, theData
                 updateProfile([userName, "Following", resp["data"]]);
             } else {
                 console.log("Bruh");
             }
-            console.log(resp['data'])
             return resp['data'];
         } catch (err) {
             console.log(err);
@@ -48,14 +45,11 @@ class APIHandler {
     async followersHandler(followersList, updateProfile, userName, pageNumber) {
         try {
             let alreadyExists;
-
-            console.log(
-                `https://api.github.com/users/${userName}/followers?per_page=100&page=${pageNumber}`
-            );
             const resp = await axios.get(
-                `https://api.github.com/users/${userName}/followers?per_page=100&page=${pageNumber}`
+                `https://api.github.com/users/${userName}/followers?per_page=100&page=${pageNumber}`, {
+                    headers: headers,
+                }
             );
-            console.log(resp['data'])
             alreadyExists = followersList[0] !== undefined;
             if (!alreadyExists) {
                 updateProfile([userName, "Followers", resp["data"]]);
@@ -68,12 +62,15 @@ class APIHandler {
         }
     }
 
-    async addHandler(data, onSubmit, userName, alreadyExists) {
+    async addHandler(data, onSubmit, userName, alreadyExists, caller) {
         try {
-            const resp = await axios.get(`https://api.github.com/users/${userName}`);
+            // "curl -i -H "Authorization: token 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"  https://api.github.com/users/octocat"
+            const resp = await axios.get(`https://api.github.com/users/${userName}`, {
+                headers: headers
+            });
             alreadyExists = data[resp["data"]["login"]] !== undefined;
             if (!alreadyExists) {
-                onSubmit(resp["data"]);
+                onSubmit(resp["data"], caller);
             } else {
                 console.log("Bruh");
             }
