@@ -2,7 +2,14 @@ import ViewAlbum from "./ViewAlbum";
 import ViewApp from "./ViewApp";
 import ViewList from "./ViewList";
 
-const FollowingContent = (props) => {
+const FollowerIngContent = (props) => {
+    const getFollowersData = () => {
+        return props.title === "Following" ? undefined : props.data;
+    }
+
+    const getFollowingData = () => {
+        return props.title === "Followers" ? undefined : props.data;
+    }
     return (
         <>
             {props.viewChoice === 1 ? (
@@ -17,13 +24,17 @@ const FollowingContent = (props) => {
             ) : props.viewChoice === 2 ? (
                 <ViewApp
                     allProfiles={props.allProfiles}
-                    following={props.following}
+                    following={getFollowingData()}
+                    followers={getFollowersData()}
                     title={props.title}
                     onAddButtonClicked={(name) => props.onAddButtonClicked(name)}
                 />
             ) : (
                 <ViewList
-                    following={props.following}
+                    allProfiles={props.allProfiles}
+                    followers={getFollowersData()}
+                    following={getFollowingData()}
+                    title={props.title}
                     onAddButtonClicked={(name) => props.onAddButtonClicked(name)}
                 />
             )}
@@ -31,4 +42,4 @@ const FollowingContent = (props) => {
     );
 };
 
-export default FollowingContent;
+export default FollowerIngContent;

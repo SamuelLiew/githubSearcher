@@ -119,9 +119,10 @@ button:focus {
 }
 
 .imageTextHolder img {
-    border-radius: 25px;
+    border-radius: 2vh;
     height: 100%;
-    padding: 1vh;
+    width: auto;
+    margin-right: 1vh;
 }
 
 .imageTextHolder h2 {
@@ -213,7 +214,7 @@ button:focus {
     flex: 1;
     justify-content: center;
     background-color: #ece8e8;
-    border-radius: 1vh;
+    border-radius: 2vh;
     margin-bottom: 1vh;
 
 }
@@ -228,7 +229,7 @@ button:focus {
 }
 
 .viewAlbum button {
-    border-radius: 10px;
+    border-radius: 2vh;
     width: 10%;
     height: 9%;
 }
@@ -256,6 +257,27 @@ button:focus {
     border-radius: 4.5vh;
 
 }
+
+.albumContent {
+    width: 40vw;
+    height: 40vw;
+    max-width: 300px;
+    max-height: 300px;
+    display: flex;
+    font-size: 2vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ece8e8;
+    border-radius: 2vh;
+}
+
+.albumContent img {
+    width: 60%;
+    height: auto;
+    border-radius: 2vh;
+}
+
 
 .viewApp {
     height: 100%;
@@ -306,38 +328,93 @@ button:focus {
     width: 90%;
     background-color: #ece8e8;
     font-size: 2vh;
-    border-radius: 20%;
+    border-radius: 2vh;
     /*display: flex;*/
     /*flex-direction: column;*/
     /*padding: 5%;*/
 }
 
 .viewAppCard img {
-    max-height: 50%;
-    border-radius: 25px;
+    width: 40%;
+    height: auto;
+    /*max-height: 50%;*/
+    border-radius: 2vh;
     margin-top: 10%;
 }
 
-
-.albumContent {
-    width: 40vw;
-    height: 40vw;
-    max-width: 300px;
-    max-height: 300px;
+.viewList {
+    height: 100%;
+    width: 100%;
     display: flex;
-    font-size: 2vh;
+    justify-content: center;
+}
+
+.viewListSlide {
+    display: flex;
     flex-direction: column;
+}
+
+.viewListCardContainer {
+    width: 100%;
+    height: calc(100% / 6);
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.viewListCardAdd {
+    position: absolute;
+    height: 4vh;
+    width: 4vh;
+    right: 0;
+    top: 25%;
+    display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #ece8e8;
-    border-radius: 10%;
+    border-radius: 40%;
 }
 
-.albumContent img {
-    width: 60%;
-    height: auto;
-    border-radius: 10%;
+.viewListCardAdd ion-icon {
+    font-size: 3vh;
+    color: rgb(123, 226, 130);
+    border-radius: 100%;
 }
+
+.viewListCard {
+    margin-bottom: 1%;
+    height: 90%;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    background-color: #ece8e8;
+    border-radius: 2vh;
+}
+
+.viewListCard:last-child {
+    margin: 0;
+}
+
+
+.viewListCard img {
+    height: 100%;
+    width: auto;
+    /*padding: 1vh;*/
+    padding-right: 1vh;
+    border-radius: inherit;
+    /*max-height: 50%;*/
+}
+
+.viewListCard div {
+    height: 100%;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 2vh;
+    /*max-height: 50%;*/
+}
+
 
 .slider {
     height: 100%;

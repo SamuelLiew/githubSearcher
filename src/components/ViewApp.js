@@ -7,15 +7,9 @@ const ViewApp = (props) => {
     };
     const addButtonHandler = (e) => {
         e.preventDefault();
-        if (e.target.className === "viewAppCardAdd") {
-            props.onAddButtonClicked(e.target.nextSibling.childNodes[1].innerText)
-        } else {
-            props.onAddButtonClicked(e.target.parentNode.nextSibling.childNodes[1].innerText)
-        }
-
-        // console.log(e.target.parentNode.nextSibling.children[1].innerText)
-        // console.log(e.target.parentNode.nextSibling)
-        // props.onAddButtonClicked();
+        props.onAddButtonClicked(e.target.className === "viewAppCardAdd"
+            ? e.target.nextSibling.childNodes[1].innerText
+            : e.target.parentNode.nextSibling.childNodes[1].innerText);
     };
 
     const viewAppContent = () => {
@@ -23,25 +17,12 @@ const ViewApp = (props) => {
         let followArray = [];
 
         if (props.following === undefined) {
-            if (props.followers.length % 100 === 0) {
-                for (let i = 0; i < parseInt(props.followers.length / 6); i++) {
-                    followArray.push(props.followers.slice(i * 6, i * 6 + 6));
-                }
-            } else {
-                for (let i = 0; i < parseInt(props.followers.length / 6) + 1; i++) {
-                    followArray.push(props.followers.slice(i * 6, i * 6 + 6));
-                }
+            for (let i = 0; i < Math.ceil(props.followers.length / 6); i++) {
+                followArray.push(props.followers.slice(i * 6, i * 6 + 6));
             }
-
         } else {
-            if (props.following.length % 100 === 0) {
-                for (let i = 0; i < parseInt(props.following.length / 6); i++) {
-                    followArray.push(props.following.slice(i * 6, i * 6 + 6));
-                }
-            } else {
-                for (let i = 0; i < parseInt(props.following.length / 6) + 1; i++) {
-                    followArray.push(props.following.slice(i * 6, i * 6 + 6));
-                }
+            for (let i = 0; i < Math.ceil(props.following.length / 6); i++) {
+                followArray.push(props.following.slice(i * 6, i * 6 + 6));
             }
         }
         followArray.forEach((array) => {
@@ -78,15 +59,6 @@ const ViewApp = (props) => {
         <div className="viewApp">
             <div className={`slider`}>
                 {viewAppContent()}
-                {/*<div className={'slide'}>*/}
-
-                {/*</div>*/}
-                {/*{props.following !== undefined && props.following.map(person => (*/}
-                {/*    <div>{person['login']}</div>*/}
-                {/*))}*/}
-                {/*{props.followers !== undefined && props.followers.map(person => (*/}
-                {/*    <div>{person['login']}</div>*/}
-                {/*))}*/}
             </div>
         </div>
     )

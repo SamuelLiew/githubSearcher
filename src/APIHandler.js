@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const headers = {}
+const headers = {
+    Authorization: 'Token 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'
+}
 const titleAPINamePair = {
     Bio: "bio",
     Blog: "blog",
