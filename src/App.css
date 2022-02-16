@@ -122,6 +122,7 @@ button:focus {
     border-radius: 2vh;
     height: 100%;
     width: auto;
+    margin-top: 0.1vh;
     margin-right: 1vh;
 }
 
@@ -218,6 +219,7 @@ button:focus {
 
 .informationContent,
 .followerIngContent,
+.starsContent,
 .repositoriesContent {
     width: 100%;
     flex: 1;
@@ -443,12 +445,13 @@ button:focus {
     /*max-height: 50%;*/
 }
 
+.starsContent .slider .slide,
 .repositoriesContent .slider .slide {
     display: flex;
     justify-content: center;
 }
 
-.repoSlideContent {
+.repoSlideContent, .starSlideContent {
     width: 100%;
     height: 100%;
     padding: 2%;
@@ -458,23 +461,26 @@ button:focus {
     flex-direction: column;
 }
 
-.repoSlideContent a {
+.repoSlideContent a, .starSlideContent a {
     text-decoration-line: none;
     cursor: pointer;
 }
 
-.repoSlideContent div {
+.repoSlideContent div,
+.starSlideContent div {
     margin-top: 2%;
     font-size: 2vh;
 }
 
 
+.starTitle,
 .repoTitle {
     margin-top: 2%;
     font-weight: bold;
     font-size: 2.5vh;
 }
 
+.starDescription,
 .repoDescription {
     font-size: 2vh;
     font-style: italic;
@@ -520,54 +526,47 @@ button:focus {
     font-size: 3em;
 }
 
-.repoTopicsContainer {
+.repoTopicsContainer,
+.starTopicsContainer {
     display: flex;
     flex-wrap: wrap;
+    overflow: scroll;
+    scrollbar-width: none;
+
 }
 
-.repoTopics {
+.repoTopicsContainer::-webkit-scrollbar,
+.starTopicsContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.repoTopics,
+.starTopics {
     margin: 0.5%;
     padding: 1%;
     border-radius: 1vh;
     background-color: rgb(210, 210, 234);
 }
 
-
-@keyframes fade-in {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
 @media (min-width: 320px) {
-
     .button {
         width: 12%;
     }
 }
 
 @media (min-width: 481px) {
-
     .button {
         width: 10%;
     }
 }
 
 @media (min-width: 769px) {
-
     .button {
         width: 6%;
     }
 }
 
 @media (min-width: 1024px) {
-    /* .contentContainer {
-      height: calc(90vh - 9vh);
-    } */
     .contentHeader {
         justify-content: center;
     }
@@ -577,20 +576,16 @@ button:focus {
     }
 }
 
-@media (min-width: 1201px) {
-    /* .contentContainer {
-      height: calc(85vh - 9vh);
-    } */
-}
-
 .active .informationContent,
 .active .repositoriesContent,
+.active .starsContent,
 .active .followerIngContent {
     opacity: 100%;
     transition: opacity 2.5s;
 }
 
 .inactive .informationContent,
+.inactive .starsContent,
 .inactive .repositoriesContent,
 .inactive .followerIngContent {
     opacity: 0;

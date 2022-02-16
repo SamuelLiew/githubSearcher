@@ -13,8 +13,8 @@ const FollowerIngs = (props) => {
     const [viewChoice, setViewChoice] = useState(1);
     const [title, setTitle] = useState("Following");
     const [clicked, setClicked] = useState(false);
-    // const [currentFollowingPage, setCurrentFollowingPage] = useState(1);
-    // const [currentFollowersPage, setCurrentFollowersPage] = useState(1);
+    const [currentFollowingPage, setCurrentFollowingPage] = useState(1);
+    const [currentFollowersPage, setCurrentFollowersPage] = useState(1);
     const [subtractedProfiles, setSubtractedProfiles] = useState({});
     const [filteredArray, setFilteredArray] = useState([]);
     const activeOrInactive =
@@ -24,23 +24,20 @@ const FollowerIngs = (props) => {
         props.onClick();
         if (clicked === false) {
             const following = await handler.followingHandler(
-                props.profile["Following"],
                 props.updateProfile,
                 props.profile["Information"]["login"],
                 1
             )
             await setFilteredArray(following.filter((dataItem) => {
                 return props.allProfiles[dataItem['login']] === undefined;
-
             }))
+
             await handler.followersHandler(
-                props.profile["Followers"],
                 props.updateProfile,
                 props.profile["Information"]["login"],
                 1
             )
             setClicked(true);
-
         }
     };
 
@@ -75,6 +72,26 @@ const FollowerIngs = (props) => {
         }))
     };
 
+
+    const callAPI = async pageNumber => {
+        if (title === "Following") {
+            await handler.followingHandler(
+                props.updateProfile,
+                props.profile["Information"]["login"],
+                pageNumber
+            )
+            setCurrentFollowingPage(pageNumber)
+        } else {
+            await handler.followersHandler(
+                props.updateProfile,
+                props.profile["Information"]["login"],
+                pageNumber
+            )
+            setCurrentFollowersPage(pageNumber)
+        }
+
+    };
+
     return (
         <Card
             status={activeOrInactive}
@@ -92,8 +109,11 @@ const FollowerIngs = (props) => {
                     </div>
                     <div className="followerIngContent">
                         <FollowerIngContent
+                            followingPage={currentFollowingPage}
+                            followerPage={currentFollowersPage}
+                            profile={props.profile}
+                            callAPI={(pageNumber) => callAPI(pageNumber)}
                             viewChoice={viewChoice}
-                            data={props.profile[title]}
                             title={title}
                             filteredArray={filteredArray}
                             setFilteredArray={(array) => setFilteredArray(array)}

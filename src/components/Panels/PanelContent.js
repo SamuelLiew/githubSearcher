@@ -30,7 +30,7 @@ const PanelContent = (props) => {
                 activeCard={whoIsActive}
             />
             <Stars
-                stars={props.profile["Stars"]}
+                profile={props.profile}
                 updateProfile={(dataArray) => props.updateProfile(dataArray)}
                 onClick={() => setWhoIsActive("stars")}
                 activeCard={whoIsActive}

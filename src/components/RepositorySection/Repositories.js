@@ -16,20 +16,17 @@ const Repositories = (props) => {
         props.onClick();
         if (!clicked) {
             const repositories = await handler.repositoryHandler(
-                props.profile["Repositories"],
                 props.updateProfile,
                 props.profile["Information"]["login"],
                 currentPage
             )
             await setQuickData(repositories);
             setClicked(true);
-            console.log(props.profile)
         }
     };
 
     const callAPI = async pageNumber => {
         const repositories = await handler.repositoryHandler(
-            props.profile["Repositories"],
             props.updateProfile,
             props.profile["Information"]["login"],
             pageNumber

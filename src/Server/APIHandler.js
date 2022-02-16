@@ -26,7 +26,23 @@ const titleAPINamePair = {
 
 class APIHandler {
 
-    async repositoryHandler(repositoryList, updateProfile, userName, pageNumber) {
+    async starsHandler(updateProfile, userName, pageNumber) {
+        try {
+            const resp = await axios.get(
+                `https://api.github.com/users/${userName}/starred?per_page=100&page=${pageNumber}`,
+                {
+                    headers: headers,
+                }
+            );
+            console.log(resp)
+            updateProfile([userName, "Stars", resp["data"]]);
+            return resp['data'];
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    async repositoryHandler(updateProfile, userName, pageNumber) {
         try {
             const resp = await axios.get(
                 `https://api.github.com/users/${userName}/repos?per_page=100&page=${pageNumber}`,
@@ -41,7 +57,7 @@ class APIHandler {
         }
     }
 
-    async followingHandler(followingList, updateProfile, userName, pageNumber) {
+    async followingHandler(updateProfile, userName, pageNumber) {
         try {
             const resp = await axios.get(
                 `https://api.github.com/users/${userName}/following?per_page=100&page=${pageNumber}`,
@@ -56,7 +72,7 @@ class APIHandler {
         }
     }
 
-    async followersHandler(followersList, updateProfile, userName, pageNumber) {
+    async followersHandler(updateProfile, userName, pageNumber) {
         try {
             const resp = await axios.get(
                 `https://api.github.com/users/${userName}/followers?per_page=100&page=${pageNumber}`, {
