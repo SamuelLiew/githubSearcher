@@ -3,9 +3,6 @@ import Panel from "./Panel";
 
 const List = (props) => {
     const [arrowDirection, setArrowDirection] = useState("left");
-    const deleteHandler = (elementName) => {
-        props.deleteHandler(elementName);
-    };
     return (
         <>
             {Object.keys(props.profiles).map((name) => (
@@ -17,7 +14,7 @@ const List = (props) => {
                     arrowDirection={arrowDirection}
                     setArrowDirection={(direction) => setArrowDirection(direction)}
                     updateProfile={(dataArray) => props.updateProfile(dataArray)}
-                    deleteHandler={deleteHandler}
+                    deleteHandler={(name) => props.deleteHandler(name)}
                 />
             ))}
         </>

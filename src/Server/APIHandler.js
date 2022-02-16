@@ -3,6 +3,8 @@ import axios from "axios";
 const headers = {
     Authorization: 'Token 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'
 }
+// "curl -i -H "Authorization: token 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"  https://api.github.com/users/octocat"
+
 const titleAPINamePair = {
     Bio: "bio",
     Blog: "blog",
@@ -23,21 +25,31 @@ const titleAPINamePair = {
 };
 
 class APIHandler {
+
+    async repositoryHandler(repositoryList, updateProfile, userName, pageNumber) {
+        try {
+            const resp = await axios.get(
+                `https://api.github.com/users/${userName}/repos?per_page=100&page=${pageNumber}`,
+                {
+                    headers: headers,
+                }
+            );
+            updateProfile([userName, "Repositories", resp["data"]]);
+            return resp['data'];
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
     async followingHandler(followingList, updateProfile, userName, pageNumber) {
         try {
-            let alreadyExists;
             const resp = await axios.get(
                 `https://api.github.com/users/${userName}/following?per_page=100&page=${pageNumber}`,
                 {
                     headers: headers,
                 }
             );
-            alreadyExists = followingList[0] !== undefined;
-            if (!alreadyExists) {
-                updateProfile([userName, "Following", resp["data"]]);
-            } else {
-                console.log("Bruh");
-            }
+            updateProfile([userName, "Following", resp["data"]]);
             return resp['data'];
         } catch (err) {
             console.log(err);
@@ -46,35 +58,28 @@ class APIHandler {
 
     async followersHandler(followersList, updateProfile, userName, pageNumber) {
         try {
-            let alreadyExists;
             const resp = await axios.get(
                 `https://api.github.com/users/${userName}/followers?per_page=100&page=${pageNumber}`, {
                     headers: headers,
                 }
             );
-            alreadyExists = followersList[0] !== undefined;
-            if (!alreadyExists) {
-                updateProfile([userName, "Followers", resp["data"]]);
-            } else {
-                console.log("Bruh");
-            }
+            updateProfile([userName, "Followers", resp["data"]]);
             return resp['data'];
         } catch (err) {
             console.log(err);
         }
     }
 
-    async addHandler(data, onSubmit, userName, alreadyExists, caller) {
+    async addHandler(data, onSubmit, userName, caller) {
         try {
-            // "curl -i -H "Authorization: token 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"  https://api.github.com/users/octocat"
             const resp = await axios.get(`https://api.github.com/users/${userName}`, {
                 headers: headers
             });
-            alreadyExists = data[resp["data"]["login"]] !== undefined;
+            const alreadyExists = data[resp["data"]["login"]] !== undefined;
             if (!alreadyExists) {
                 onSubmit(resp["data"], caller);
             } else {
-                console.log("Bruh");
+                console.log("Username is in the list.");
             }
         } catch (err) {
             console.log(err);

@@ -1,8 +1,8 @@
 import {useState} from "react";
-import FollowerIngs from "./FollowerIngs";
-import Information from "./Information";
-import Repositories from "./Repositories";
-import Stars from "./Stars";
+import FollowerIngs from "../FollowerIngSection/FollowerIngs";
+import Information from "../InformationSection/Information";
+import Repositories from "../RepositorySection/Repositories";
+import Stars from "../StarsSection/Stars";
 
 const PanelContent = (props) => {
     const [whoIsActive, setWhoIsActive] = useState("information");
@@ -24,7 +24,7 @@ const PanelContent = (props) => {
                 activeCard={whoIsActive}
             />
             <Repositories
-                repositories={props.profile["Repositories"]}
+                profile={props.profile}
                 updateProfile={(dataArray) => props.updateProfile(dataArray)}
                 onClick={() => setWhoIsActive("repositories")}
                 activeCard={whoIsActive}

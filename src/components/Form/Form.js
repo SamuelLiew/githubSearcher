@@ -1,5 +1,5 @@
 import {useState} from "react";
-import APIHandler from "../APIHandler";
+import APIHandler from "../../Server/APIHandler";
 
 const Form = (props) => {
     const [userName, setUserName] = useState("");
@@ -7,9 +7,7 @@ const Form = (props) => {
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        let alreadyExists = false;
-
-        handler.addHandler(props.data, props.onSubmit, userName, alreadyExists);
+        handler.addHandler(props.data, props.onSubmit, userName);
         setUserName("");
     };
 

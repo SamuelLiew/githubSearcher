@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="733a40b6-1863-4827-adf0-33e55fe10ca2" name="Changes" comment="Completed the View App implementation.">
-      <change afterPath="$PROJECT_DIR$/src/components/FollowerIngContent.js" afterDir="false" />
+    <list default="true" id="733a40b6-1863-4827-adf0-33e55fe10ca2" name="Changes" comment="Combined the Followers and Following Content and cleaned up the code.&#10;Completed the List view feature. This marks the end of the Followers and Following section.">
+      <change afterPath="$PROJECT_DIR$/src/components/RepositorySection/Repositories.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/RepositorySection/RepositoryContent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/StarsSection/StarsContent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/APIHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/APIHandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/APIHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/APIHandler.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FollowerContent.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FollowerIngs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FollowerIngs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FollowingContent.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ViewApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ViewApp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ViewList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ViewList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card/Card.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FollowerIngContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FollowerIngSection/FollowerIngContent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FollowerIngs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FollowerIngSection/FollowerIngs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Form/Form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Information.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InformationSection/Information.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/InformationContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InformationSection/InformationContent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/List.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Panels/List.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Panel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Panels/Panel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PanelContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Panels/PanelContent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Repositories.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Stars.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StarsSection/Stars.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ViewAlbum.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FollowerIngSection/ViewAlbum.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ViewApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FollowerIngSection/ViewApp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ViewList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FollowerIngSection/ViewList.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +77,15 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Samuel\Desktop\React Projects\first_project\src\Server" />
+      <recent name="C:\Users\Samuel\Desktop\React Projects\first_project\src\components\Form" />
+      <recent name="C:\Users\Samuel\Desktop\React Projects\first_project\src\components\Panels" />
+      <recent name="C:\Users\Samuel\Desktop\React Projects\first_project\src\components\StarsSection" />
+      <recent name="C:\Users\Samuel\Desktop\React Projects\first_project\src\components\RepositorySection" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -82,7 +103,8 @@
       <workItem from="1644717028607" duration="19011000" />
       <workItem from="1644746105897" duration="12000" />
       <workItem from="1644800526106" duration="706000" />
-      <workItem from="1644824595510" duration="8605000" />
+      <workItem from="1644824595510" duration="31761000" />
+      <workItem from="1644966965526" duration="4711000" />
     </task>
     <task id="LOCAL-00001" summary="Successfully changed the main data structure from Arrays to Hashmap.&#10;Implemented the Album View. Added support for the Followers option.">
       <created>1644457667399</created>
@@ -105,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644745690409</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Combined the Followers and Following Content and cleaned up the code.&#10;Completed the List view feature. This marks the end of the Followers and Following section.">
+      <created>1644834057572</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1644834057572</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,7 +155,8 @@
     <MESSAGE value="Successfully changed the main data structure from Arrays to Hashmap.&#10;Implemented the Album View. Added support for the Followers option." />
     <MESSAGE value="Removed Warnings" />
     <MESSAGE value="Completed the View App implementation." />
-    <option name="LAST_COMMIT_MESSAGE" value="Completed the View App implementation." />
+    <MESSAGE value="Combined the Followers and Following Content and cleaned up the code.&#10;Completed the List view feature. This marks the end of the Followers and Following section." />
+    <option name="LAST_COMMIT_MESSAGE" value="Combined the Followers and Following Content and cleaned up the code.&#10;Completed the List view feature. This marks the end of the Followers and Following section." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

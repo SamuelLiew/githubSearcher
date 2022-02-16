@@ -1,6 +1,6 @@
 import {useState} from "react";
-import List from "./components/List";
-import Form from "./components/Form";
+import List from "./components/Panels/List";
+import Form from "./components/Form/Form";
 import "./App.css";
 
 const App = () => {
@@ -44,7 +44,7 @@ const App = () => {
                 ...prevState,
                 [loginName]: {
                     ...prevState[loginName],
-                    [titleToBeUpdated]: [...theData]
+                    [titleToBeUpdated]: [...prevState[loginName][titleToBeUpdated], ...theData]
                 }
             }
         ))

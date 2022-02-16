@@ -1,6 +1,6 @@
 import {useState} from "react";
-import APIHandler from "../APIHandler";
-import Card from "./Card";
+import APIHandler from "../../Server/APIHandler";
+import Card from "../Card/Card";
 import FollowerIngContent from "./FollowerIngContent";
 
 const FollowerIngs = (props) => {
@@ -65,7 +65,7 @@ const FollowerIngs = (props) => {
     };
 
     const onAddButtonClickedHandler = (name) => {
-        handler.addHandler(props.allProfiles, props.onAdd, name, false, props.profile["Information"]["login"])
+        handler.addHandler(props.allProfiles, props.onAdd, name, props.profile["Information"]["login"])
     };
 
     const onSubButtonClickedHandler = (name) => {
@@ -78,7 +78,7 @@ const FollowerIngs = (props) => {
     return (
         <Card
             status={activeOrInactive}
-            onClick={(e) => clickHandler(e)}
+            onClick={clickHandler}
             child={
                 <>
                     <div className="contentHeader">

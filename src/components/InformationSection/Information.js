@@ -1,6 +1,6 @@
-import Card from "./Card";
+import Card from "../Card/Card";
 import InformationContent from "./InformationContent";
-import APIHandler from "../APIHandler";
+import APIHandler from "../../Server/APIHandler";
 import {useState} from "react";
 
 const Information = (props) => {
