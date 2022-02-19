@@ -3,14 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="733a40b6-1863-4827-adf0-33e55fe10ca2" name="Changes" comment="Improved the Followers and Following Section.&#10;Completed stars section.&#10;Removed Duplicate code.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/APIHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/APIHandler.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/FollowerIngSection/FollowerIngContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FollowerIngSection/FollowerIngContent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/FollowerIngSection/FollowerIngs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FollowerIngSection/FollowerIngs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FollowerIngSection/ViewAlbum.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FollowerIngSection/ViewAlbum.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/FollowerIngSection/ViewApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FollowerIngSection/ViewApp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FollowerIngSection/ViewList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FollowerIngSection/ViewList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Panels/PanelContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Panels/PanelContent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RepositorySection/Repositories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RepositorySection/Repositories.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RepositorySection/RepositoryContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RepositorySection/RepositoryContent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/StarsSection/Stars.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StarsSection/Stars.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/StarsSection/StarsContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StarsSection/StarsContent.js" afterDir="false" />
     </list>
@@ -95,6 +96,7 @@
       <workItem from="1644800526106" duration="706000" />
       <workItem from="1644824595510" duration="31761000" />
       <workItem from="1644966965526" duration="23321000" />
+      <workItem from="1645135822530" duration="19166000" />
     </task>
     <task id="LOCAL-00001" summary="Successfully changed the main data structure from Arrays to Hashmap.&#10;Implemented the Album View. Added support for the Followers option.">
       <created>1644457667399</created>

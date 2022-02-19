@@ -7,7 +7,7 @@ const ViewAlbum = (props) => {
                 return (together[itemObject['login']] === undefined);
             }))
         }
-
+        fetchData();
     };
 
     const addHandler = () => {
@@ -18,8 +18,16 @@ const ViewAlbum = (props) => {
                 return (together[itemObject['login']] === undefined);
             }))
         }
+        fetchData();
 
     };
+    const fetchData = async () => {
+        if ((props.filteredArray.length === 90 && props.profile[props.title].length % 100 === 0)
+            && props.profile["Information"][props.title.toLowerCase()] > props.profile[props.title].length) {
+            const data = await props.callAPI();
+            props.setFilteredArray([...props.filteredArray, ...data])
+        }
+    }
 
     const imageHandler = () => {
         if (props.filteredArray[0] !== undefined) {

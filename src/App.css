@@ -1,618 +1,646 @@
 @import "https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap";
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 ion-icon {
-    font-size: 3vh;
+  font-size: 3vh;
 }
 
-
 body {
-    font-family: "Roboto", sans-serif;
-    margin: 0;
-    font-size: 2.5vh;
-    --safe-area-inset-top: env(safe-area-inset-top);
-    --safe-area-inset-bottom: env(safe-area-inset-bottom);
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  font-size: 2.5vh;
+  overflow: hidden;
+  overscroll-behavior-x: none;
 }
 
 button {
-    border-style: none;
-    cursor: pointer;
-    width: 4.5%;
-    background-color: #fff;
-    padding: 0;
-
-
+  border-style: none;
+  cursor: pointer;
+  width: 4.5%;
+  background-color: #fff;
+  padding: 0;
 }
 
 button:hover {
-    color: #2d74df;
+  color: #2d74df;
 }
 
 button:focus {
-    outline: none;
+  outline: none;
+}
+
+.bodyClass {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
 
 .header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .title {
-    margin: 1vh;
-    font-size: 5vh;
+  margin: 1vh;
+  font-size: 5vh;
+}
+
+.darkModeButton {
+  width: 10%;
 }
 
 .userNameForm {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .userNameForm button {
-    width: auto;
-    margin: 0;
-    font-size: 2vh;
-    padding: 0;
-    border-bottom: gray solid 1px;
+  width: auto;
+  margin: 0;
+  font-size: 2vh;
+  padding: 0;
+  border-bottom: gray solid 1px;
 }
 
 .userNameInput {
-    border-radius: 0;
-    border-style: none;
-    height: 4vh;
-    width: 70vw;
-    font-size: 2vh;
-    border-bottom: gray solid 1px;
-    text-align: center;
+  border-radius: 0;
+  border-style: none;
+  height: 4vh;
+  width: 70vw;
+  font-size: 2vh;
+  border-bottom: gray solid 1px;
+  text-align: center;
 }
 
 .userNameInput:focus {
-    outline: none;
+  outline: none;
 }
 
 .panel {
-    display: flex;
-    flex-direction: column;
-    /* justify-content: flex-start; */
-    /* overflow: hidden; */
+  display: flex;
+  flex-direction: column;
 }
 
 .bodySlider {
-    /* height: 100vh; */
-    height: 90vh;
-    width: 100vw;
-    display: flex;
-    scroll-snap-type: both mandatory;
-    text-align: center;
-    overflow-x: auto;
-    overflow-y: auto;
-    scrollbar-width: none;
-    flex-direction: column;
-
-    /* margin: calc(var(--safe-area-inset-bottom) + var(--safe)) 0vh; */
-    /* margin-top: var(--safe-area-inset-top); */
-    /* margin-bottom: var(--safe-area-inset-bottom); */
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: auto;
+  scrollbar-width: none;
+  flex-direction: column;
+  scroll-snap-align: always;
+  scroll-snap-type: both mandatory;
 }
 
 .bodySlider::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .bodySlide {
-    scroll-snap-stop: always;
-    scroll-snap-align: start;
-    width: 100%;
-    height: 100%;
-    flex-shrink: 0;
-    scroll-behavior: smooth;
+  /* padding: 1vh 0; */
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  scroll-behavior: auto;
+  scroll-snap-align: none;
 }
 
 .imageTextHolder {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    height: 10%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 10%;
 }
 
 .imageTextHolder img {
-    border-radius: 2vh;
-    height: 100%;
-    width: auto;
-    margin-top: 0.1vh;
-    margin-right: 1vh;
+  border-radius: 2vh;
+  height: 100%;
+  width: auto;
+  margin-top: 0.1vh;
+  margin-right: 1vh;
 }
 
 .imageTextHolder h2 {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    font-size: 2.5vh;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 2.5vh;
 }
 
 .contentContainer {
-    display: flex;
-    flex-direction: column;
-    height: 90%;
+  display: flex;
+  flex-direction: column;
+  height: 90%;
 }
 
 .Card {
-    display: flex;
-    flex-direction: column;
-    transition: flex 2s;
-    align-items: center;
-    overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: flex 2s;
+  align-items: center;
+  overflow: hidden;
 }
 
 .active {
-    flex: 5;
+  flex: 5;
 }
 
 .inactive {
-    flex: 0.5;
+  flex: 0.5;
 }
 
 .contentHeader {
-    width: 70%;
-    justify-content: center;
-    display: flex;
+  width: 70%;
+  justify-content: center;
+  display: flex;
 }
 
 .active .contentHeader {
-    flex: 0.1;
-    transition: flex 1s;
+  flex: 0.1;
+  transition: flex 1s;
 }
 
 .inactive .contentHeader {
-    flex: 1;
-    transition: flex 5s;
+  flex: 1;
+  transition: flex 5s;
 }
 
 .inactive .contentHeader .button {
-    display: none;
+  display: none;
 }
 
 .contentHeader h3 {
-    margin: 0;
+  margin: 0;
 }
 
-
 .button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 10%;
-    padding: 0;
-    height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10%;
+  padding: 0;
+  height: 70%;
 }
 
 .slider {
-    height: 100%;
-    width: 70%;
-    display: flex;
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    scroll-snap-type: both mandatory;
-    border-radius: 1vh;
-    border-width: 0 1px;
+  height: 100%;
+  width: 70%;
+  display: flex;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-snap-type: both mandatory;
+  border-radius: 1vh;
+  border-width: 0 1px;
 }
 
-
 .slider::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .slide {
-    padding: 0 2%;
-    scroll-snap-stop: always;
-    overflow: visible;
-    scroll-snap-align: start;
-    width: 100%;
-    flex-shrink: 0;
-    height: 100%;
-    scroll-behavior: smooth;
+  padding: 0 2%;
+  scroll-snap-stop: always;
+  overflow: visible;
+  scroll-snap-align: start;
+  width: 100%;
+  flex-shrink: 0;
+  height: 100%;
+  scroll-behavior: smooth;
+  align-items: center;
 }
 
 .informationContent,
 .followerIngContent,
 .starsContent,
 .repositoriesContent {
-    width: 100%;
-    flex: 1;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    overflow: hidden;
-    max-width: 700px;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  overflow: hidden;
+  max-width: 700px;
 }
 
 .miniCardContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  flex-direction: column;
 }
 
 .miniCard {
-    font-size: 2vh;
-    width: 100%;
-    padding: 0;
-    flex: 1;
-    justify-content: center;
-    background-color: #ece8e8;
-    border-radius: 2vh;
-    margin-bottom: 1vh;
-
+  font-size: 2vh;
+  width: 100%;
+  padding: 0;
+  flex: 1;
+  justify-content: center;
+  background-color: #ece8e8;
+  border-radius: 2vh;
+  margin-bottom: 1vh;
 }
 
 .viewAlbum {
-    height: 100%;
-    width: 70%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
+  height: 100%;
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .viewAlbum button {
-    border-radius: 2vh;
-    width: 10%;
-    height: 9%;
+  width: 10%;
+  height: 9%;
 }
 
 .viewAlbum button:first-child {
-    color: #EE5C74;
+  color: #ee5c74;
 }
 
 .viewAlbum button:last-child {
-    color: #7EE385;
+  color: #7ee385;
 }
 
 .viewAlbum button:first-child:hover {
-    color: #ff002b;
-
+  color: #ff002b;
 }
 
 .viewAlbum button:last-child:hover {
-    color: #00ff11;
+  color: #00ff11;
 }
 
 .viewAlbum button ion-icon {
-    font-size: 4vh;
-    background-color: #ece8e8;
-    border-radius: 4.5vh;
-
+  font-size: 4vh;
+  border-radius: 4.5vh;
 }
 
 .albumContent {
-    width: 40vw;
-    height: 40vw;
-    max-width: 300px;
-    max-height: 300px;
-    display: flex;
-    font-size: 2vh;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #ece8e8;
-    border-radius: 2vh;
+  width: 40vw;
+  height: 40vw;
+  max-width: 300px;
+  max-height: 300px;
+  display: flex;
+  font-size: 2vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ece8e8;
+  border-radius: 2vh;
 }
 
 .albumContent img {
-    width: 60%;
-    height: auto;
-    border-radius: 2vh;
+  width: 60%;
+  height: auto;
+  border-radius: 2vh;
 }
 
-
 .viewApp {
-    height: 100%;
-    width: 100%;
-    max-width: 540px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    /*align-items: center;*/
+  height: 100%;
+  width: 100%;
+  max-width: 540px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .viewAppSlide {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .viewAppCardContainer {
-    height: 33%;
-    width: 50%;
-    position: relative;
+  height: 33%;
+  width: 50%;
+  position: relative;
 }
 
 .viewAppCardContainer div {
-    text-overflow: ellipsis;
-    overflow: hidden;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .viewAppCardAdd {
-    position: absolute;
-    height: 5vh;
-    width: 5vh;
-    bottom: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 40%;
+  position: absolute;
+  height: 5vh;
+  width: 5vh;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40%;
 }
 
 .viewAppCardAdd ion-icon {
-    border-radius: 100%;
-    color: #7EE385;
+  border-radius: 100%;
+  color: #7ee385;
 }
 
 .viewAppCard {
-    height: 90%;
-    width: 90%;
-    background-color: #ece8e8;
-    font-size: 2vh;
-    border-radius: 2vh;
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*padding: 5%;*/
+  height: 90%;
+  width: 90%;
+  background-color: #ece8e8;
+  font-size: 2vh;
+  border-radius: 2vh;
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*padding: 5%;*/
 }
 
 .viewAppCard img {
-    width: 40%;
-    height: auto;
-    /*max-height: 50%;*/
-    border-radius: 2vh;
-    margin-top: 10%;
+  width: 40%;
+  height: auto;
+  /*max-height: 50%;*/
+  border-radius: 2vh;
+  margin-top: 10%;
 }
 
 .viewList {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .viewListSlide {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .viewListCardContainer {
-    width: 100%;
-    height: calc(100% / 6);
-    display: flex;
-    justify-content: center;
-    position: relative;
+  width: 100%;
+  height: calc(100% / 6);
+  display: flex;
+  justify-content: center;
+  position: relative;
 }
 
 .viewListCardAdd {
-    position: absolute;
-    height: 4vh;
-    width: 4vh;
-    right: 0;
-    top: 25%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 40%;
+  position: absolute;
+  height: 4vh;
+  width: 4vh;
+  right: 0;
+  top: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40%;
 }
 
 .viewListCardAdd ion-icon {
-    font-size: 3vh;
-    color: rgb(123, 226, 130);
-    border-radius: 100%;
+  font-size: 3vh;
+  color: rgb(123, 226, 130);
+  border-radius: 100%;
 }
 
 .viewListCard {
-    margin-bottom: 1%;
-    height: 90%;
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: #ece8e8;
-    border-radius: 2vh;
+  margin-bottom: 1%;
+  height: 90%;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #ece8e8;
+  border-radius: 2vh;
 }
 
 .viewListCard:last-child {
-    margin: 0;
+  margin: 0;
 }
 
-
 .viewListCard img {
-    height: 80%;
-    width: auto;
-    margin: 0 1vh;
-    border-radius: inherit;
+  height: 80%;
+  width: auto;
+  margin: 0 1vh;
+  border-radius: inherit;
 }
 
 .viewListCard div {
-    height: 100%;
-    width: 80%;
-    display: flex;
-    align-items: center;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    font-size: 2vh;
-    /*max-height: 50%;*/
+  height: 100%;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 2vh;
 }
 
 .starsContent .slider .slide,
 .repositoriesContent .slider .slide {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
-.repoSlideContent, .starSlideContent {
-    width: 100%;
-    height: 100%;
-    padding: 2%;
-    background-color: #ece8e8;
-    border-radius: 2vh;
-    display: flex;
-    flex-direction: column;
+.repoSlideContent,
+.starSlideContent {
+  width: 100%;
+  height: 100%;
+  padding: 2%;
+  background-color: #ece8e8;
+  border-radius: 2vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.repoSlideContent a, .starSlideContent a {
-    text-decoration-line: none;
-    cursor: pointer;
+.repoSlideContent a,
+.starSlideContent a {
+  text-decoration-line: none;
+  color: #2d74df;
+  cursor: pointer;
 }
 
 .repoSlideContent div,
 .starSlideContent div {
-    margin-top: 2%;
-    font-size: 2vh;
+  margin-top: 2%;
+  font-size: 2vh;
 }
-
 
 .starTitle,
 .repoTitle {
-    margin-top: 2%;
-    font-weight: bold;
-    font-size: 2.5vh;
+  margin-top: 2%;
+  font-weight: bold;
+  font-size: 2.5vh;
 }
 
 .starDescription,
 .repoDescription {
-    font-size: 2vh;
-    font-style: italic;
-    min-height: 10%;
-    margin-top: 0;
-    border-bottom: solid 0.5px rgb(210, 210, 234);
+  font-size: 2vh;
+  font-style: italic;
+  max-height: 20%;
+  overflow: scroll;
+  text-overflow: ellipsis;
+  margin-top: 0;
+  scrollbar-width: none;
+}
+
+.starDescription::-webkit-scrollbar,
+.repoDescription::-webkit-scrollbar {
+  display: none;
 }
 
 .numericalHolder {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 .availabilityContainer {
-    width: 100%;
-    height: 15%;
-    display: flex;
+  width: 100%;
+  height: 15%;
+  display: flex;
 }
 
 .availabilityContainer div {
-    flex: 1;
+  flex: 1;
 
-    /*height: 100%;*/
+  /*height: 100%;*/
 }
 
-.archived, .disabled {
-    /*background-color: rgb(210, 210, 234);*/
-    border-radius: 2vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+.archived,
+.disabled {
+  /*background-color: rgb(210, 210, 234);*/
+  border-radius: 2vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
-
-#archivedBackground, #disabledBackground {
-    position: absolute;
-    font-weight: bolder;
-    color: #998a8a;
-    opacity: 15%;
-    margin: 0;
-    font-size: 3em;
+#archivedBackground,
+#disabledBackground {
+  position: absolute;
+  font-weight: bolder;
+  color: #998a8a;
+  opacity: 15%;
+  margin: 0;
+  font-size: 3em;
 }
 
 .repoTopicsContainer,
 .starTopicsContainer {
-    display: flex;
-    flex-wrap: wrap;
-    overflow: scroll;
-    scrollbar-width: none;
-
+  display: flex;
+  flex-wrap: wrap;
+  overflow: scroll;
+  scrollbar-width: none;
 }
 
 .repoTopicsContainer::-webkit-scrollbar,
 .starTopicsContainer::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .repoTopics,
 .starTopics {
-    margin: 0.5%;
-    padding: 1%;
-    border-radius: 1vh;
-    background-color: rgb(210, 210, 234);
+  margin: 0.5%;
+  padding: 1%;
+  min-width: 15%;
+  border-radius: 1vh;
+  background-color: rgb(210, 210, 234);
 }
 
 @media (min-width: 320px) {
-    .button {
-        width: 12%;
-    }
+  .button {
+    width: 12%;
+  }
 }
 
 @media (min-width: 481px) {
-    .button {
-        width: 10%;
-    }
+  .bodySlide {
+    scroll-snap-align: start;
+  }
+  .button {
+    width: 10%;
+  }
 }
 
 @media (min-width: 769px) {
-    .button {
-        width: 6%;
-    }
+  .button {
+    width: 6%;
+  }
 }
 
 @media (min-width: 1024px) {
-    .contentHeader {
-        justify-content: center;
-    }
+  .contentHeader {
+    justify-content: center;
+  }
 
-    .button {
-        width: 4%;
-    }
+  .button {
+    width: 4%;
+  }
 }
 
 .active .informationContent,
 .active .repositoriesContent,
 .active .starsContent,
 .active .followerIngContent {
-    opacity: 100%;
-    transition: opacity 2.5s;
+  opacity: 100%;
+  transition: opacity 2.5s;
 }
 
 .inactive .informationContent,
 .inactive .starsContent,
 .inactive .repositoriesContent,
 .inactive .followerIngContent {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 1s, visibility 0s 1s;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s, visibility 0s 1s;
 }
 
 .up {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 .left {
-    flex-direction: row;
+  flex-direction: row;
 }
 
 .trulyCollapse {
-    opacity: 0;
-    height: 0;
-    transition: height 1.5s, width 1.5s, opacity 1s, margin 1.5s;
+  opacity: 0;
+  height: 0;
+  transition: height 1.5s, width 1.5s, opacity 1s, margin 1.5s;
 }
 
-.loadMore, .loading, .loadPrev {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.loadMore,
+.loading,
+.loadPrev {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.loadMore h3, .loadPrev h3 {
-    cursor: pointer;
+.loadMore h3,
+.loadPrev h3 {
+  cursor: pointer;
+}
+
+.dark,
+.dark button,
+.dark input {
+  background-color: #181a1b;
+  color: white;
+}
+
+.dark .miniCard,
+.dark .repoSlideContent,
+.dark .starSlideContent,
+.dark .albumContent,
+.dark .viewAppCard,
+.dark .viewListCard {
+  background-color: #242728;
+}
+
+.dark .starTopics,
+.dark .repoTopics {
+  background-color: #2b2e30;
 }

@@ -34,7 +34,6 @@ class APIHandler {
                     headers: headers,
                 }
             );
-            console.log(resp)
             updateProfile([userName, "Stars", resp["data"]]);
             return resp['data'];
         } catch (err) {

@@ -20,10 +20,10 @@ const FollowerIngContent = (props) => {
     const loadHandler = e => {
         e.target.parentElement.parentElement.scrollLeft = e.target.parentElement.clientWidth;
         if (props.title === "Followers") {
-            if ((lastFollowersIndex + 50) % 100 === 0 && props.profile[props.title].length <= lastFollowersIndex + 50) props.callAPI(props.followerPage + 1);
+            if ((lastFollowersIndex + 50) % 100 === 0 && props.profile[props.title].length <= lastFollowersIndex + 50) props.callAPI();
             setLastFollowersIndex(lastFollowersIndex + 50)
         } else {
-            if ((lastFollowingIndex + 50) % 100 === 0 && props.profile[props.title].length <= lastFollowingIndex + 50) props.callAPI(props.followingPage + 1)
+            if ((lastFollowingIndex + 50) % 100 === 0 && props.profile[props.title].length <= lastFollowingIndex + 50) props.callAPI()
             setLastFollowingIndex(lastFollowingIndex + 50)
         }
     };
@@ -80,30 +80,35 @@ const FollowerIngContent = (props) => {
 
     return (
         <>
-            {props.viewChoice === 1 ? (
-                <ViewAlbum
-                    filteredArray={props.filteredArray}
-                    setFilteredArray={(array) => props.setFilteredArray(array)}
-                    allProfiles={props.allProfiles}
-                    subtractedProfiles={props.subtractedProfiles}
-                    onAddButtonClicked={(name) => props.onAddButtonClicked(name)}
-                    onSubButtonClicked={(name) => props.onSubButtonClicked(name)}
-                />
-            ) : props.viewChoice === 2 ? (
-                <ViewApp
-                    getContainerAndData={getContainerAndData}
-                    getExpandedJSX={getExpandedJSX}
-                    allProfiles={props.allProfiles}
-                    onAddButtonClicked={(name) => props.onAddButtonClicked(name)}
-                />
-            ) : (
-                <ViewList
-                    getContainerAndData={getContainerAndData}
-                    getExpandedJSX={getExpandedJSX}
-                    allProfiles={props.allProfiles}
-                    onAddButtonClicked={(name) => props.onAddButtonClicked(name)}
-                />
-            )}
+            {props.profile['Information'][props.title.toLowerCase()] ?
+                (props.viewChoice === 1 ? (
+                    <ViewAlbum
+                        filteredArray={props.filteredArray}
+                        setFilteredArray={(array) => props.setFilteredArray(array)}
+                        profile={props.profile}
+                        title={props.title}
+                        callAPI={props.callAPI}
+                        allProfiles={props.allProfiles}
+                        subtractedProfiles={props.subtractedProfiles}
+                        onAddButtonClicked={(name) => props.onAddButtonClicked(name)}
+                        onSubButtonClicked={(name) => props.onSubButtonClicked(name)}
+                    />
+                ) : props.viewChoice === 2 ? (
+                    <ViewApp
+                        getContainerAndData={getContainerAndData}
+                        getExpandedJSX={getExpandedJSX}
+                        allProfiles={props.allProfiles}
+                        onAddButtonClicked={(name) => props.onAddButtonClicked(name)}
+                    />
+                ) : (
+                    <ViewList
+                        getContainerAndData={getContainerAndData}
+                        getExpandedJSX={getExpandedJSX}
+                        allProfiles={props.allProfiles}
+                        onAddButtonClicked={(name) => props.onAddButtonClicked(name)}
+                    />
+                )) : (<h3>Such Emptiness...</h3>)
+            }
         </>
     );
 };

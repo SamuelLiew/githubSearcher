@@ -6,7 +6,6 @@ const ViewApp = (props) => {
             : e.target.parentNode.nextSibling.childNodes[1].innerText);
     };
 
-
     const viewAppContent = () => {
         let followArray, jsxArray;
         [followArray, jsxArray] = props.getContainerAndData();

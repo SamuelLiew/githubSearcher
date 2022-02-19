@@ -76,12 +76,20 @@ const StarsContent = (props) => {
 
     return (
         <div className="slider">
-            {!props.clicked && <div className="slide loading"><h3>Loading...</h3></div>}
-            {(props.clicked && lastIndex - 50 !== 0) &&
-                <div className="slide loadPrev"><h3 onClick={(e) => prevHandler(e)}>Click to Load Previous!</h3></div>}
-            {props.clicked && jsxHandler()}
-            {props.data.length >= lastIndex &&
-                <div className="slide loadMore"><h3 onClick={(e) => loadHandler(e)}>Click to Load More!</h3></div>}
+            {(props.data[0] !== undefined && props.data[0] === "SuchEmpty")
+                ? <div className={'slide'}><h3>Such Emptiness...</h3></div>
+                : <>
+                    {!props.clicked && <div className="slide loading"><h3>Loading...</h3></div>}
+                    {(props.clicked && lastIndex - 50 !== 0) &&
+                        <div className="slide loadPrev"><h3 onClick={(e) => prevHandler(e)}>Click to Load Previous!</h3>
+                        </div>}
+                    {props.clicked && jsxHandler()}
+                    {props.data.length >= lastIndex &&
+                        <div className="slide loadMore"><h3 onClick={(e) => loadHandler(e)}>Click to Load More!</h3>
+                        </div>}
+
+                </>
+            }
         </div>
     )
 }

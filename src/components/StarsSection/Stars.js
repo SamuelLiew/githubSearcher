@@ -20,10 +20,22 @@ const Stars = (props) => {
                 props.profile["Information"]["login"],
                 currentPage
             )
-            await setQuickData(stars);
+            console.log(stars)
+            // console.log(quickData)
+            // console.log(quickData.length)
+            if (stars.length === 0) {
+                await setQuickData(['SuchEmpty'])
+            } else {
+                await setQuickData(stars);
+            }
+
             setClicked(true);
         }
     };
+
+    // useEffect(() => {
+    //     console.log(quickData)
+    // })
 
     const callAPI = async pageNumber => {
         const stars = await handler.starsHandler(
@@ -32,7 +44,6 @@ const Stars = (props) => {
             pageNumber
         )
         await setQuickData([...quickData, ...stars])
-
     };
 
     return (

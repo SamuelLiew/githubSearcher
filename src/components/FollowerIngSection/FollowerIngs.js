@@ -62,7 +62,7 @@ const FollowerIngs = (props) => {
     };
 
     const onAddButtonClickedHandler = (name) => {
-        handler.addHandler(props.allProfiles, props.onAdd, name, props.profile["Information"]["login"])
+        handler.addHandler(props.allProfiles, props.onAdd, name, props.profile["Information"]["login"]).then()
     };
 
     const onSubButtonClickedHandler = (name) => {
@@ -73,23 +73,25 @@ const FollowerIngs = (props) => {
     };
 
 
-    const callAPI = async pageNumber => {
+    const callAPI = async () => {
+        let data;
         if (title === "Following") {
-            await handler.followingHandler(
+            data = await handler.followingHandler(
                 props.updateProfile,
                 props.profile["Information"]["login"],
-                pageNumber
+                currentFollowingPage + 1
             )
-            setCurrentFollowingPage(pageNumber)
+            setCurrentFollowingPage(currentFollowingPage + 1)
         } else {
-            await handler.followersHandler(
+            data = await handler.followersHandler(
                 props.updateProfile,
                 props.profile["Information"]["login"],
-                pageNumber
+                currentFollowersPage + 1
             )
-            setCurrentFollowersPage(pageNumber)
+            setCurrentFollowersPage(currentFollowersPage + 1)
         }
-
+        console.log(data)
+        return data;
     };
 
     return (
@@ -109,10 +111,8 @@ const FollowerIngs = (props) => {
                     </div>
                     <div className="followerIngContent">
                         <FollowerIngContent
-                            followingPage={currentFollowingPage}
-                            followerPage={currentFollowersPage}
                             profile={props.profile}
-                            callAPI={(pageNumber) => callAPI(pageNumber)}
+                            callAPI={callAPI}
                             viewChoice={viewChoice}
                             title={title}
                             filteredArray={filteredArray}
