@@ -1,14 +1,16 @@
-import {useState} from "react";
+import {useContext, useState} from "react";
 import APIHandler from "../../Server/APIHandler";
 import Card from "../Card/Card";
 import FollowerIngContent from "./FollowerIngContent";
+import {UpdateProfile} from "../../App";
 
+/**
+ * The Follower and Following Section. The Parent component of FollowerIngContent component.
+ * @param props
+ * @returns {JSX.Element}
+ * @constructor
+ */
 const FollowerIngs = (props) => {
-    const views = {
-        1: <ion-icon name="albums-outline"/>,
-        2: <ion-icon name="apps-outline"/>,
-        3: <ion-icon name="list-outline"/>,
-    };
     const handler = new APIHandler();
     const [viewChoice, setViewChoice] = useState(1);
     const [title, setTitle] = useState("Following");
@@ -17,14 +19,29 @@ const FollowerIngs = (props) => {
     const [currentFollowersPage, setCurrentFollowersPage] = useState(1);
     const [subtractedProfiles, setSubtractedProfiles] = useState({});
     const [filteredArray, setFilteredArray] = useState([]);
+    const updateProfile = useContext(UpdateProfile);
+
     const activeOrInactive =
         props.activeCard === "followerings" ? "active" : "inactive";
 
+    /**
+     * Stores the different types of buttons.
+     * @type {{"1": JSX.Element, "2": JSX.Element, "3": JSX.Element}}
+     */
+    const views = {
+        1: <ion-icon name="albums-outline"/>,
+        2: <ion-icon name="apps-outline"/>,
+        3: <ion-icon name="list-outline"/>,
+    };
+    /**
+     * Handles what happens when the user clicks on the FollowerIngs title.
+     * @returns {Promise<void>}
+     */
     const clickHandler = async () => {
         props.onClick();
         if (clicked === false) {
             const following = await handler.followingHandler(
-                props.updateProfile,
+                updateProfile,
                 props.profile["Information"]["login"],
                 1
             )
@@ -33,7 +50,7 @@ const FollowerIngs = (props) => {
             }))
 
             await handler.followersHandler(
-                props.updateProfile,
+                updateProfile,
                 props.profile["Information"]["login"],
                 1
             )
@@ -41,16 +58,23 @@ const FollowerIngs = (props) => {
         }
     };
 
+    /**
+     * Handles what happens when the change view button is clicked.
+     */
     const viewHandler = () => {
         const together = {...props.allProfiles, ...subtractedProfiles}
-        setFilteredArray([...props.profile[title].filter((dataItem) => {
-            return together[dataItem['login']] === undefined;
-        })])
+        if (viewChoice === 3) {
+            setFilteredArray([...props.profile[title].filter((dataItem) => {
+                return together[dataItem['login']] === undefined;
+            })])
+        }
         setViewChoice(viewChoice === 3 ? 1 : viewChoice + 1);
     };
 
-    const switchHandler = (e) => {
-        e.stopPropagation();
+    /**
+     * Handles what happens when the switch button is clicked.
+     */
+    const switchHandler = () => {
         const holder = title === "Following" ? "Followers" : "Following";
 
         const together = {...props.allProfiles, ...subtractedProfiles}
@@ -61,10 +85,18 @@ const FollowerIngs = (props) => {
         setTitle(holder);
     };
 
+    /**
+     * Handles what happens when the add button is clicked.
+     * @param name receives the username of the added item.
+     */
     const onAddButtonClickedHandler = (name) => {
         handler.addHandler(props.allProfiles, props.onAdd, name, props.profile["Information"]["login"]).then()
     };
 
+    /**
+     * Handles what happens when the minus button is clicked.
+     * @param name receives the username of the "subtracted" item.
+     */
     const onSubButtonClickedHandler = (name) => {
         setSubtractedProfiles(prevState => ({
             ...prevState,
@@ -72,25 +104,27 @@ const FollowerIngs = (props) => {
         }))
     };
 
-
+    /**
+     * Does some control flow and finally calls the API.
+     * @returns {Promise<any>}
+     */
     const callAPI = async () => {
         let data;
         if (title === "Following") {
             data = await handler.followingHandler(
-                props.updateProfile,
+                updateProfile,
                 props.profile["Information"]["login"],
                 currentFollowingPage + 1
             )
             setCurrentFollowingPage(currentFollowingPage + 1)
         } else {
             data = await handler.followersHandler(
-                props.updateProfile,
+                updateProfile,
                 props.profile["Information"]["login"],
                 currentFollowersPage + 1
             )
             setCurrentFollowersPage(currentFollowersPage + 1)
         }
-        console.log(data)
         return data;
     };
 

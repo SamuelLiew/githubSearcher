@@ -1,24 +1,20 @@
 import Card from "../Card/Card";
 
+/**
+ * Returns JSX for the Information Content.
+ * @param props panels, miniCardHandler
+ * @returns {JSX.Element}
+ */
 const InformationContent = (props) => {
-    let key = 0;
-
-    const getKey = () => {
-        key = key + 1;
-        return key;
-    };
-    const miniCardHandler = (e) => {
-        props.miniCardHandler(e.target.innerText.trim());
-    };
     return (
         <div className={`miniCardContainer slide`} id={props.id}>
-            {props.titles.map((title) => {
+            {props.titles.map((title, index) => {
                 return (
                     <Card
-                        key={getKey()}
+                        key={index}
                         child={<>{title}</>}
-                        onClick={miniCardHandler}
-                        onTouchStart={miniCardHandler}
+                        onClick={e => props.miniCardHandler(e.target.innerText.trim())}
+                        onTouchStart={e => props.miniCardHandler(e.target.innerText.trim())}
                         status="miniCard"
                     />
                 );

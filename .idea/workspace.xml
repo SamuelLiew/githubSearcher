@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="733a40b6-1863-4827-adf0-33e55fe10ca2" name="Changes" comment="Improved the Followers and Following Section.&#10;Completed stars section.&#10;Removed Duplicate code.">
+    <list default="true" id="733a40b6-1863-4827-adf0-33e55fe10ca2" name="Changes" comment="Added Documentation. &#10;Decreased the size of the Welcome slide.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/APIHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/APIHandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Card/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card/Card.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/FollowerIngSection/FollowerIngContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FollowerIngSection/FollowerIngContent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/FollowerIngSection/FollowerIngs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FollowerIngSection/FollowerIngs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/FollowerIngSection/ViewAlbum.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FollowerIngSection/ViewAlbum.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/FollowerIngSection/ViewApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FollowerIngSection/ViewApp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FollowerIngSection/ViewList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FollowerIngSection/ViewList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Form/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Form/Form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/InformationSection/Information.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InformationSection/Information.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/InformationSection/InformationContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InformationSection/InformationContent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Panels/List.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Panels/List.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Panels/Panel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Panels/Panel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Panels/PanelContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Panels/PanelContent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RepositorySection/Repositories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RepositorySection/Repositories.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RepositorySection/RepositoryContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RepositorySection/RepositoryContent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/StarsSection/Stars.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StarsSection/Stars.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/StarsSection/StarsContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StarsSection/StarsContent.js" afterDir="false" />
@@ -48,11 +56,15 @@
     <option name="myRunOnSave" value="true" />
   </component>
   <component name="ProjectId" id="24ny9qjfJWc5vrnpPldF9i8bZDC" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -65,7 +77,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\Samuel\AppData\Roaming\npm" />
     <property name="rearrange.code.on.save" value="true" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -97,6 +109,8 @@
       <workItem from="1644824595510" duration="31761000" />
       <workItem from="1644966965526" duration="23321000" />
       <workItem from="1645135822530" duration="19166000" />
+      <workItem from="1645323003288" duration="18546000" />
+      <workItem from="1645405247110" duration="13798000" />
     </task>
     <task id="LOCAL-00001" summary="Successfully changed the main data structure from Arrays to Hashmap.&#10;Implemented the Album View. Added support for the Followers option.">
       <created>1644457667399</created>
@@ -151,13 +165,15 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Successfully changed the main data structure from Arrays to Hashmap.&#10;Implemented the Album View. Added support for the Followers option." />
     <MESSAGE value="Removed Warnings" />
     <MESSAGE value="Completed the View App implementation." />
     <MESSAGE value="Combined the Followers and Following Content and cleaned up the code.&#10;Completed the List view feature. This marks the end of the Followers and Following section." />
     <MESSAGE value="Moved files to their respective directory.&#10;Completed the Repository Section." />
     <MESSAGE value="Improved the Followers and Following Section.&#10;Completed stars section.&#10;Removed Duplicate code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Improved the Followers and Following Section.&#10;Completed stars section.&#10;Removed Duplicate code." />
+    <MESSAGE value="Added Documentation. &#10;Decreased the size of the Welcome slide." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Documentation. &#10;Decreased the size of the Welcome slide." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
