@@ -1,7 +1,7 @@
 import axios from "axios";
 // FUTURE IDEA: Implement OAuth.
 const headers = {
-    // Authorization: 'Token '
+    // Authorization: `Token ${token}`
 };
 
 const titleAPINamePair = {

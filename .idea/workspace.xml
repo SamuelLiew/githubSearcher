@@ -1,27 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="733a40b6-1863-4827-adf0-33e55fe10ca2" name="Changes" comment="Added Documentation. &#10;Decreased the size of the Welcome slide.">
+    <list default="true" id="733a40b6-1863-4827-adf0-33e55fe10ca2" name="Changes" comment="Added Documentation. &#10;Decreased the size of the Welcome slide.&#10;Added Tracker at the top.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/APIHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/APIHandler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Card/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card/Card.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FollowerIngSection/FollowerIngContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FollowerIngSection/FollowerIngContent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FollowerIngSection/FollowerIngs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FollowerIngSection/FollowerIngs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FollowerIngSection/ViewAlbum.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FollowerIngSection/ViewAlbum.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FollowerIngSection/ViewApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FollowerIngSection/ViewApp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FollowerIngSection/ViewList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FollowerIngSection/ViewList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Form/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Form/Form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/InformationSection/Information.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InformationSection/Information.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/InformationSection/InformationContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InformationSection/InformationContent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Panels/List.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Panels/List.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Panels/Panel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Panels/Panel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Panels/PanelContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Panels/PanelContent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RepositorySection/Repositories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RepositorySection/Repositories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RepositorySection/RepositoryContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RepositorySection/RepositoryContent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/StarsSection/Stars.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StarsSection/Stars.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/StarsSection/StarsContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StarsSection/StarsContent.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +93,8 @@
       <workItem from="1644966965526" duration="23321000" />
       <workItem from="1645135822530" duration="19166000" />
       <workItem from="1645323003288" duration="18546000" />
-      <workItem from="1645405247110" duration="13798000" />
+      <workItem from="1645405247110" duration="13842000" />
+      <workItem from="1645480878458" duration="162000" />
     </task>
     <task id="LOCAL-00001" summary="Successfully changed the main data structure from Arrays to Hashmap.&#10;Implemented the Album View. Added support for the Followers option.">
       <created>1644457667399</created>
@@ -147,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644973519381</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added Documentation. &#10;Decreased the size of the Welcome slide.&#10;Added Tracker at the top.">
+      <created>1645444851768</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1645444851768</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,7 +164,8 @@
     <MESSAGE value="Moved files to their respective directory.&#10;Completed the Repository Section." />
     <MESSAGE value="Improved the Followers and Following Section.&#10;Completed stars section.&#10;Removed Duplicate code." />
     <MESSAGE value="Added Documentation. &#10;Decreased the size of the Welcome slide." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Documentation. &#10;Decreased the size of the Welcome slide." />
+    <MESSAGE value="Added Documentation. &#10;Decreased the size of the Welcome slide.&#10;Added Tracker at the top." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Documentation. &#10;Decreased the size of the Welcome slide.&#10;Added Tracker at the top." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
